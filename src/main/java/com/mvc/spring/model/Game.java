@@ -80,4 +80,17 @@ public class Game implements Serializable {
     public void setEuSales(Double euSales) {
         this.euSales = euSales;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", platform='" + platform + '\'' +
+                ", year=" + year +
+                ", genre='" + genre + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", euSales=" + euSales +
+                '}';
+    }
 }

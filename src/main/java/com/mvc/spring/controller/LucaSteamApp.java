@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mvc.spring.model.Game;
 import com.mvc.spring.services.LucaService;
 
+import java.io.File;
+
 @Controller
 public class LucaSteamApp {
 	
@@ -46,4 +48,9 @@ public class LucaSteamApp {
 		return "filteredGames";
 	}
 
+	@GetMapping("/loadData")
+	public String loadDataFromFile(){
+		service.loadDataFromFile(new File("vgsales.csv"));
+		return("redirect:/");
+	}
 }
