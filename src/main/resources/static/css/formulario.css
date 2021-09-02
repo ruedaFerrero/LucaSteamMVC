@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+#cover {
+    background: #222 url('https://c.tenor.com/cWOd7i_U3LgAAAAC/jesus-simpsons.gif') center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}

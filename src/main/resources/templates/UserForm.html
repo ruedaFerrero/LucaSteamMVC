@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+
+	<section id="cover" class="min-vh-100">
+		<div id="cover-caption">
+			<div class="container">
+				<div class="row text-white">
+					<div class="col-xl-7  mx-auto text-center form ">
+						<h1 class="display-4 text-light">Introduzca un videojuego
+							(add/edit)</h1>
+						<div class="px-2">
+
+							<form method="post" th:object="${game}" th:action="@{/save}">
+								<div class="form-group ">
+									<label for="game">Nombre</label> <input type="text"
+										class="form-control" id="game"
+										placeholder="Introduzca el nombre del juego">
+								</div>
+
+								<div class="form-group  ">
+									<label for="genre">Genero</label> <input type="text"
+										class="form-control" id="genre" placeholder="Genero">
+								</div>
+
+								<div class="form-group   ">
+									<label for="platform">Plataforma</label> <input type="text"
+										class="form-control" id="platform" placeholder="Plataforma">
+								</div>
+
+								<div class="form-group ">
+									<label for="publisher">Publisher</label> <input type="text"
+										class="form-control" id="publisher" placeholder="Publisher">
+								</div>
+
+								<div class="form-group ">
+									<label for="year">Anyo</label> <input type="number"
+										class="form-control" id="year" min="1960" max="2021"
+										placeholder="Anyo de lanzamiento">
+								</div>
+
+								<div class="form-group  ">
+									<label for="sales">Ventas</label> <input type="number"
+										class="form-control" id="sales" min="0" max="900000000" placeholder="Numero de ventas">
+								</div>
+								<button type="submit" class="btn btn-primary btn-lg">Crear
+									juego</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+
