@@ -104,6 +104,11 @@ public class LucaSteamApp {
 		return("redirect:/");
 	}
 
+	/**
+	 * Carga la página principal
+	 * @param model
+	 * @return index.html
+	 */
 	@GetMapping
 	public String mainPage(Model model){
 		model.addAttribute("gameList", service.getAllGames());
