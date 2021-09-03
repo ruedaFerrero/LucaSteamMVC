@@ -19,12 +19,13 @@ public interface LucaService {
 
 	public Game findById(Long id);
 
-	public List<Game> findFirst10(Long index);
 	
 	public void deleteGame(Long id);
 	
 	public List<Game> gamesFilteredByGenre(String genre);
 	
 	Page<Game> getAll(Pageable pageable);
+        
+        public List<Game> gamesFilteredByName(String name);
 
 }
