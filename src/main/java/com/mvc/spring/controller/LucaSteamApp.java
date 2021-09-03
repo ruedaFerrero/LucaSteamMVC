@@ -12,6 +12,13 @@ import com.mvc.spring.services.LucaService;
 
 import java.io.File;
 
+
+/**
+ * LucaSteamApp
+ * Controlador de la aplicación. Permite dirigir al usuario a través de las distintas páginas del proyecto y actualizarlas. 
+ * @author Julio
+ * @version 1.0, Septiembre 2021
+ */
 @Controller
 public class LucaSteamApp {
 	
@@ -34,7 +41,7 @@ public class LucaSteamApp {
 	}
 	
 	/**
-	 * Método que actualiza la tabla de datos guardando un juego en ella, ya sea añadiéndolo nuevo o actualizando uno ya existente.
+	 * Método que actualiza la tabla de datos guardando un juego en ella, ya sea añadiéndolo como un juego nuevo o actualizando uno ya existente.
 	 * 
 	 * @author Jose
 	 * @version 1.0, Septiembre 2021
