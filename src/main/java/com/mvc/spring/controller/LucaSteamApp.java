@@ -75,9 +75,11 @@ public class LucaSteamApp {
 	 * @param name nombre del juego a eliminar
 	 * @return redirecciona a la página inicial, actualizándola
 	 */
-	@GetMapping("/delete")
-	public String deleteGame(@RequestParam("id") Long id) {
-		service.deleteGame(id);
+	@PostMapping("/delete")
+	public String deleteGame(Long id) {
+		if(id != null){
+			service.deleteGame(id);
+		}
 		return("redirect:/");
 	}
 	
