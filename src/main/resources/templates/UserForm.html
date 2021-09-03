@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" th:href="@{/css/formulario.css}" >
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/sidebars.css}" />
+	<link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+	<link rel="stylesheet" th:href="@{/css/formulario.css}" >
 </head>
 <body>
 
@@ -29,7 +32,7 @@
                       <li>
                         <a href="#" class="nav-link active" aria-current="page">
                           <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                          Añadir juego
+                          AÃ±adir juego
                         </a>
                       </li>
                       <li>
@@ -92,9 +95,9 @@
 								</div>
 
 								<div class="form-group ">
-									<label for="year">Año</label> <input type="number"
+									<label for="year">AÃ±o</label> <input type="number"
 										class="form-control" id="year" th:field="*{year}" min="1960"
-										max="2021" placeholder="Año de lanzamiento">
+										max="2021" placeholder="AÃ±o de lanzamiento">
 								</div>
 
 								<div class="form-group  ">
@@ -114,6 +117,9 @@
 			</div>
 		</div>
 	</main>
+	<script th:href="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:href="@{/js/dashboard.js}"></script>
+	<script th:href="@{/js/sidebars.js}"></script>
 </body>
 </html>
 
