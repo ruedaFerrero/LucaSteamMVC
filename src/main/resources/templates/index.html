@@ -3,14 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.87.0">
-    <title>Dashboard Template · Bootstrap v5.1</title>
-
-
-    
-
+    <meta name="description" content="Pagina realizada con spring-boot">
+    <title>LucaSteam</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
     <link rel="stylesheet" th:href="@{/css/sidebars.css}" />
@@ -34,9 +28,7 @@
     </style>
   </head>
   <body>
-      
     <main>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark col-2">
@@ -103,125 +95,27 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Header</th>
-                            <th scope="col">Header</th>
-                            <th scope="col">Header</th>
-                            <th scope="col">Header</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Genre</th>
+                            <th scope="col">Platform</th>
+                            <th scope="col">Publisher</th>
+                            <th scope="col">eu_sales</th>
+                            <th scope="col">year</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1,001</td>
-                            <td>random</td>
-                            <td>data</td>
-                            <td>placeholder</td>
-                            <td>text</td>
-                          </tr>
-                          <tr>
-                            <td>1,002</td>
-                            <td>placeholder</td>
-                            <td>irrelevant</td>
-                            <td>visual</td>
-                            <td>layout</td>
-                          </tr>
-                          <tr>
-                            <td>1,003</td>
-                            <td>data</td>
-                            <td>rich</td>
-                            <td>dashboard</td>
-                            <td>tabular</td>
-                          </tr>
-                          <tr>
-                            <td>1,003</td>
-                            <td>information</td>
-                            <td>placeholder</td>
-                            <td>illustrative</td>
-                            <td>data</td>
-                          </tr>
-                          <tr>
-                            <td>1,004</td>
-                            <td>text</td>
-                            <td>random</td>
-                            <td>layout</td>
-                            <td>dashboard</td>
-                          </tr>
-                          <tr>
-                            <td>1,005</td>
-                            <td>dashboard</td>
-                            <td>irrelevant</td>
-                            <td>text</td>
-                            <td>placeholder</td>
-                          </tr>
-                          <tr>
-                            <td>1,006</td>
-                            <td>dashboard</td>
-                            <td>illustrative</td>
-                            <td>rich</td>
-                            <td>data</td>
-                          </tr>
-                          <tr>
-                            <td>1,007</td>
-                            <td>placeholder</td>
-                            <td>tabular</td>
-                            <td>information</td>
-                            <td>irrelevant</td>
-                          </tr>
-                          <tr>
-                            <td>1,008</td>
-                            <td>random</td>
-                            <td>data</td>
-                            <td>placeholder</td>
-                            <td>text</td>
-                          </tr>
-                          <tr>
-                            <td>1,009</td>
-                            <td>placeholder</td>
-                            <td>irrelevant</td>
-                            <td>visual</td>
-                            <td>layout</td>
-                          </tr>
-                          <tr>
-                            <td>1,010</td>
-                            <td>data</td>
-                            <td>rich</td>
-                            <td>dashboard</td>
-                            <td>tabular</td>
-                          </tr>
-                          <tr>
-                            <td>1,011</td>
-                            <td>information</td>
-                            <td>placeholder</td>
-                            <td>illustrative</td>
-                            <td>data</td>
-                          </tr>
-                          <tr>
-                            <td>1,012</td>
-                            <td>text</td>
-                            <td>placeholder</td>
-                            <td>layout</td>
-                            <td>dashboard</td>
-                          </tr>
-                          <tr>
-                            <td>1,013</td>
-                            <td>dashboard</td>
-                            <td>irrelevant</td>
-                            <td>text</td>
-                            <td>visual</td>
-                          </tr>
-                          <tr>
-                            <td>1,014</td>
-                            <td>dashboard</td>
-                            <td>illustrative</td>
-                            <td>rich</td>
-                            <td>data</td>
-                          </tr>
-                          <tr>
-                            <td>1,015</td>
-                            <td>random</td>
-                            <td>tabular</td>
-                            <td>information</td>
-                            <td>text</td>
-                          </tr>
+                            <tr th:each="game, status : ${gameList}">
+				<td th:text="${status.index + 1}" />
+				<td th:text="${game.name}" />
+				<td th:text="${game.genre}" />
+				<td th:text="${game.platform}" />
+                                <td th:text="${game.publisher}" />
+                                <td th:text="${game.eu_sales}" />
+				<td th:text="${game.year}" />
+				<td><a th:href="@{/edit(id=${game.id})}">Modificar</a> | <a
+					th:href="@{/delete(id=${game.id})}">Eliminar</a></td>
+                            </tr>
+                          
                         </tbody>
                       </table>
                     </div>
