@@ -99,7 +99,7 @@ public class LucaServiceImp implements LucaService {
 	 * @return <List>Game
 	 */
 	public List<Game> gamesFilteredByGenre(String genre) {
-		return repository.findByGenre(genre);
+		return repository.findAllByGenreContaining(genre);
 	}
 
 	@Override
@@ -161,7 +161,28 @@ public class LucaServiceImp implements LucaService {
         
         @Override
         public List<Game> gamesFilteredByName(String name){
-            return repository.findAllByName(name);
+            return repository.findAllByNameContaining(name);
         }
+        
+        @Override
+        public List<Game> gamesFilteredByPlatform(String name){
+            return repository.findAllByPlatformContaining(name);
+        }
+        
+        @Override
+        public List<Game> gamesFilteredByPublisher(String name){
+            return repository.findAllByPublisherContaining(name);
+        }
+        
+        @Override
+        public List<Game> gamesFilteredByYear(Integer year){
+            return repository.findAllByYear(year);
+        }
+        
+        @Override
+        public List<Game> gamesFilteredByEusales(Double sales){
+            return repository.findAllByEuSales(sales);
+        }
+        
 
 }

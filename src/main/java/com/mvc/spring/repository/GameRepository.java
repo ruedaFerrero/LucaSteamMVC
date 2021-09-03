@@ -33,7 +33,16 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 * @param genre Género de los juegos que queremos buscar
 	 * @return Lista de juegos
 	 */
-	List<Game> findByGenre(String genre);
+	List<Game> findAllByGenreContaining(String genre);
 
-	List<Game> findAllByName(String name);
+	List<Game> findAllByNameContaining(String name);
+        
+        List<Game> findAllByPlatformContaining(String name);
+        
+        List<Game> findAllByPublisherContaining(String name);
+        
+        List<Game> findAllByYear(Integer name);
+        
+        List<Game> findAllByEuSales(Double name);
+        
 }

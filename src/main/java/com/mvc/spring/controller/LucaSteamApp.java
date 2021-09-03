@@ -65,14 +65,32 @@ public class LucaSteamApp {
                     listGames = service.gamesFilteredByName(query.getText());
                     break;
                 case "genre":
+                    listGames = service.gamesFilteredByGenre(query.getText());
                     break;
                 case "platform":
+                    listGames = service.gamesFilteredByPlatform(query.getText());
                     break;
                 case "publisher":
+                    listGames = service.gamesFilteredByPublisher(query.getText());
                     break;
                 case "year":
+                    Integer year=0;
+                    try{
+                        year = Integer.parseInt(query.getText());
+                    }catch(java.lang.NumberFormatException e){
+                        year = null;
+                    }
+                    listGames = service.gamesFilteredByYear(year);
                     break;
                 case "eu_sales":
+                    Double sales=0.0;
+                    try{
+                        sales = Double.parseDouble(query.getText());
+                    }catch(java.lang.NumberFormatException e){
+                        sales = null;
+                    }
+                
+                    listGames = service.gamesFilteredByEusales(sales);
                     break;
                 
             }
