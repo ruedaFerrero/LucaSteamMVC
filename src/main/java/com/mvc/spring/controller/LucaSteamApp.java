@@ -11,8 +11,6 @@ import com.mvc.spring.model.Game;
 import com.mvc.spring.services.LucaService;
 
 import java.io.File;
-
-
 /**
  * LucaSteamApp
  * Controlador de la aplicación. Permite dirigir al usuario a través de las distintas páginas del proyecto y actualizarlas. 
@@ -23,7 +21,7 @@ import java.io.File;
 public class LucaSteamApp {
 	
 	@Autowired
-	LucaService service;
+	private LucaService service;
 	
 	/**
 	 * Método que lleva a la página con el formulario para añadir un juego.
@@ -32,7 +30,7 @@ public class LucaSteamApp {
 	 * @version 1.0, Septiembre 2021
 	 * @param m Model
 	 * @param game objeto tipo Game vacío
-	 * @return la página addGameForm
+	 * @return la página UserForm
 	 */
 	@GetMapping("/add")
 	public String newGame(Model m, Game game) {
@@ -64,8 +62,8 @@ public class LucaSteamApp {
 	 * @return la página addGameForm
 	 */
 	@GetMapping("/edit")
-	public String editGame(@RequestParam("name") String name, Model m) {
-		m.addAttribute("game", service.findByName(name));
+	public String editGame(@RequestParam("id") Long id, Model m) {
+		m.addAttribute("game", service.findById(id));
 		return "UserForm";
 	}
 	
@@ -78,8 +76,8 @@ public class LucaSteamApp {
 	 * @return redirecciona a la página inicial, actualizándola
 	 */
 	@GetMapping("/delete")
-	public String deleteGame(@RequestParam("name") String name) {
-		service.deleteGame(name);
+	public String deleteGame(@RequestParam("id") Long id) {
+		service.deleteGame(id);
 		return("redirect:/");
 	}
 	

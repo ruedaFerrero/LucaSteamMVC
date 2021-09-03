@@ -13,7 +13,7 @@ import com.mvc.spring.model.Game;
  * @version 1.0, Septiembre 2021
  */
 @Repository
-public interface GameRepository extends JpaRepository<Game, Integer>{
+public interface GameRepository extends JpaRepository<Game, Long>{
 
 	/**
 	 * Devuelve una lista con todos los juegos

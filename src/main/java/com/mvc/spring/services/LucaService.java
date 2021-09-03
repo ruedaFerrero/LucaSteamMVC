@@ -13,8 +13,10 @@ public interface LucaService {
 	public List<Game> getAllGames();
 	
 	public Game findByName(String name);
+
+	public Game findById(Long id);
 	
-	public void deleteGame(String name);
+	public void deleteGame(Long id);
 	
 	public List<Game> gamesFilteredByGenre(String genre);
 
