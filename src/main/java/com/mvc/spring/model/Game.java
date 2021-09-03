@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import java.io.Serializable;
 
 /**
+ * Game
  * La clase Game representa un juego en nuestro sistema
  * @author Julio Rueda
  * @version 1.0, Septiembre, 2021
