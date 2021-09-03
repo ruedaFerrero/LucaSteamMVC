@@ -27,5 +27,13 @@ public interface LucaService {
 	Page<Game> getAll(Pageable pageable);
         
         public List<Game> gamesFilteredByName(String name);
+        
+        public List<Game> gamesFilteredByPlatform(String name);
+        
+        public List<Game> gamesFilteredByPublisher(String name);
+        
+        public List<Game> gamesFilteredByYear(Integer year);
+        
+        public List<Game> gamesFilteredByEusales(Double sales);
 
 }
