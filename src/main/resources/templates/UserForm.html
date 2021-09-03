@@ -2,111 +2,131 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Pagina realizada con spring-boot">
 <title>Insert title here</title>
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-	<link rel="stylesheet" th:href="@{/css/sidebars.css}" />
-	<link rel="stylesheet" th:href="@{/css/dashboard.css}" />
-	<link rel="stylesheet" th:href="@{/css/formulario.css}" >
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+<link rel="stylesheet" th:href="@{/css/sidebars.css}">
+<link rel="stylesheet" th:href="@{/css/formulario.css}">
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
 </head>
 <body>
 
+	<main class="cover">
 
-	<div class="container-fluid">
-           
-        <div class="row">
-               
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark col-2">
-                <div class="p-3 text-white bg-dark" style="width: 200px;">
-                    <a href="/" class="d-flex align-items-center  mb-md-0 me-md-auto text-white text-decoration-none">
-                      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                      <span class="fs-4">Main menu</span>
-                    </a>
-                    <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
-                      <li class="nav-item">
-                        <a href="#" class="nav-link text-white">
-                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                          Home
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link active" aria-current="page">
-                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                          Añadir juego
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link text-white align-center">
-                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                          Filtrado de plataformas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link text-white">
-                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
-                          Products
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" class="nav-link text-white">
-                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-                          Customers
-                        </a>
-                      </li>
-                    </ul>
-                    <hr>
-                  </div>
-                </div>
+		<div class="container-fluid">
+
+			<div class="row">
+
+				<div
+					class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark col-2">
+
+					<a href="/"
+						class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+						<svg class="bi me-2" width="40" height="32">
+							<use xlink:href="#bootstrap" /></svg> <span class="fs-4">Main
+							menu</span>
+					</a>
+					<hr>
+
+					<ul class="nav nav-pills flex-column mb-auto">
+						<li class="nav-item"><a href="#" class="nav-link active"
+							aria-current="page"> <svg class="bi me-2" width="16"
+									height="16">
+									<use xlink:href="#home" /></svg> Añadir/Editar
+						</a></li>
+						<li><a href="#" class="nav-link text-white"> <svg
+									class="bi me-2" width="16" height="16">
+									<use xlink:href="#table" /></svg> Filtrado
+						</a></li>
+						<li><a href="#" class="nav-link text-white"> <svg
+									class="bi me-2" width="16" height="16">
+									<use xlink:href="#grid" /></svg> Products
+						</a></li>
+						<li><a href="#" class="nav-link text-white"> <svg
+									class="bi me-2" width="16" height="16">
+									<use xlink:href="#people-circle" /></svg> Customers
+						</a></li>
+					</ul>
+					<hr>
+				</div>
 
 				<div class="b-example-divider"></div>
 
 
-				<div class="col-8">
-					<div class=" mx-auto text-center form ">
-						<h1 class="display-4 text-light">Introduzca un videojuego
-							(add/edit)</h1>
+				<div class="d-flex flex-column flex-shrink-0 p-3  col-8">
+					<div class="mx-auto text-center form ">
+						<h1 class="display-4 text-light mt-2 mb-4">Datos del
+							videojuego (add/edit)</h1>
 						<div class="px-2">
 
 							<form method="post" th:object="${game}" th:action="@{/save}">
 								<input id="id" th:field="*{id}" type="hidden" />
-								
-								<div class="form-group ">
+
+								<div class="form-group text-light mt-3 ">
 									<label for="game">Nombre</label> <input type="text"
 										class="form-control" id="game" th:field="*{name}"
 										placeholder="Nombre del juego">
 								</div>
 
-								<div class="form-group  ">
+								<div class="form-group  text-light mt-3 ">
 									<label for="genre">Genero</label> <input type="text"
 										class="form-control" id="genre" th:field="*{genre}"
 										placeholder="Genero del juego">
 								</div>
 
-								<div class="form-group   ">
+								<div class="form-group  text-light mt-3 ">
 									<label for="platform">Plataforma</label> <input type="text"
 										class="form-control" id="platform" th:field="*{platform}"
 										placeholder="Plataforma">
 								</div>
 
-								<div class="form-group ">
+								<div class="form-group text-light mt-3 ">
 									<label for="publisher">Publisher</label> <input type="text"
 										class="form-control" id="publisher" th:field="*{publisher}"
 										placeholder="Publisher">
 								</div>
 
-								<div class="form-group ">
+								<div class="form-group text-light mt-3 ">
 									<label for="year">Año</label> <input type="number"
 										class="form-control" id="year" th:field="*{year}" min="1960"
 										max="2021" placeholder="Año de lanzamiento">
 								</div>
 
-								<div class="form-group  ">
+								<div class="form-group text-light mt-3 ">
 									<label for="sales">Ventas</label> <input type="number"
-										class="form-control" id="sales" th:field="*{euSales}" min="0" step="any"
-										max="900000000" placeholder="Numero de ventas">
+										class="form-control" id="sales" th:field="*{euSales}" min="0"
+										step="any" max="900000000" placeholder="Numero de ventas">
 								</div>
-								<button type="submit" class="btn btn-primary btn-lg">Crear
-									juego</button>
+								<div class="row mt-5">
+
+									<div class="col">
+										<button type="submit" class="btn btn-success btn-lg">Crear
+											juego</button>
+									</div>
+									<div class="col">
+										<button type="submit" id="delete"
+											class="btn btn-danger btn-lg" th:formaction="@{/delete}">Borrar
+											juego</button>
+									</div>
+
+								</div>
 							</form>
 						</div>
 					</div>
@@ -120,6 +140,10 @@
 	<script th:href="@{/js/bootstrap.bundle.min.js}"></script>
 	<script th:href="@{/js/dashboard.js}"></script>
 	<script th:href="@{/js/sidebars.js}"></script>
+
+
+
+
 </body>
 </html>
 

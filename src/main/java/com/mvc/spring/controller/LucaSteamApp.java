@@ -85,10 +85,10 @@ public class LucaSteamApp {
 	 */
 	@PostMapping("/delete")
 	public String deleteGame(Long id) {
-		if(id != null){
-			service.deleteGame(id);
-		}
+		if(id!=null)
+		service.deleteGame(id);
 		return("redirect:/");
+		
 	}
 	
 	/**
