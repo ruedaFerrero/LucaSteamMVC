@@ -34,4 +34,6 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 * @return Lista de juegos
 	 */
 	List<Game> findByGenre(String genre);
+
+	List<Game> findFirst10ByIdGreaterThan(Long current);
 }

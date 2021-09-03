@@ -105,7 +105,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="game, status : ${gameList}">
-				<td th:text="${status.index + 1}" />
+				<td th:text="${status.index + 1 }+${id}" />
 				<td th:text="${game.name}" />
 				<td th:text="${game.genre}" />
 				<td th:text="${game.platform}" />
@@ -115,12 +115,15 @@
 				<td><a th:href="@{/edit(id=${game.id})}">Modificar</a> | <a
 					th:href="@{/delete(id=${game.id})}">Eliminar</a></td>
                             </tr>
-                          
                         </tbody>
+
                       </table>
+                        <a th:href="@{/(id=${id}-10)}"> < </a>
+                        <a th:href="@{/(id=${id}+10)}"> > </a>
                     </div>
-    
+
                 </div>
+
                 
     
             </div>

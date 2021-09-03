@@ -115,8 +115,12 @@ public class LucaSteamApp {
 	 * @return index.html
 	 */
 	@GetMapping
-	public String mainPage(Model model){
-		model.addAttribute("gameList", service.getAllGames());
+	public String mainPage(Model model, Long id){
+		if(id == null || id < 0L){
+			id=0L;
+		}
+		model.addAttribute("gameList", service.findFirst10(id));
+		model.addAttribute("id", id);
 		return "index";
 	}
 }

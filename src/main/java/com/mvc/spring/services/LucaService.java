@@ -15,6 +15,8 @@ public interface LucaService {
 	public Game findByName(String name);
 
 	public Game findById(Long id);
+
+	public List<Game> findFirst10(Long index);
 	
 	public void deleteGame(Long id);
 	
