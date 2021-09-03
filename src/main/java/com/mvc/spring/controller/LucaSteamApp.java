@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvc.spring.model.Game;
+import com.mvc.spring.model.QueryInfo;
 import com.mvc.spring.services.LucaService;
 
 import java.io.File;
@@ -47,14 +48,36 @@ public class LucaSteamApp {
 	}
         
         @GetMapping("/search")
-	public String InitsearchGame(Game game) {
+	public String InitsearchGame(Model m) {
+            m.addAttribute("query", new QueryInfo());
 		return "SearchForm";
 	}
         
         
         @PostMapping("/search")
-	public String processSearchGame(@RequestParam("name") String name,Model m) {
-                m.addAttribute("gameList", service.findByName(name));
+	public String processSearchGame(QueryInfo query,Model m) {
+            System.out.println("###########");
+            System.out.println("text: "+query.getText()+" option: "+query.getOption());
+            System.out.println("###########");
+            List<Game> listGames = null;
+            switch(query.getOption()){
+                case "name":
+                    listGames = service.gamesFilteredByName(query.getText());
+                    break;
+                case "genre":
+                    break;
+                case "platform":
+                    break;
+                case "publisher":
+                    break;
+                case "year":
+                    break;
+                case "eu_sales":
+                    break;
+                
+            }
+                m.addAttribute("query", query);
+                m.addAttribute("listGames", listGames);
 		return "SearchForm";
 	}
         

@@ -74,10 +74,6 @@ public class LucaServiceImp implements LucaService {
 		return out;
 	}
 
-	@Override
-	public List<Game> findFirst10(Long index) {
-		return repository.findFirst10ByIdGreaterThan(index);
-	}
 
 	@Override
 	/**
@@ -162,5 +158,10 @@ public class LucaServiceImp implements LucaService {
 		
 		return repository.findAll(pageable);
 	}
+        
+        @Override
+        public List<Game> gamesFilteredByName(String name){
+            return repository.findAllByName(name);
+        }
 
 }

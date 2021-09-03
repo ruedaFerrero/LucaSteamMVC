@@ -90,43 +90,43 @@
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div class="container-fluid">
                         <div class="row">
-                            <form class="form-inline pt-4" method="post">
+                            <form class="form-inline pt-4" th:object="${query}" method="post">
                                 <div class="row g-3">
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Text Search" aria-label="Text-search" id="search">
+                                        <input type="text" class="form-control" placeholder="Text Search" aria-label="Text-search" id="search" th:field="*{text}">
                                     </div>
                                     <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="name" value="name" checked >
+                                        <input class="form-check-input" type="radio" name="searchMetod" id="name" value="name" checked th:field="*{option}">
                                         <label class="form-check-label" for="name">
                                           Name
                                         </label>
                                     </div>
                                     <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="genre" value="genre">
+                                        <input class="form-check-input" type="radio" name="searchMetod" id="genre" value="genre" th:field="*{option}">
                                         <label class="form-check-label" for="genre">
                                           Genre
                                         </label>
                                     </div>
                                     <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="platform" value="platform">
+                                        <input class="form-check-input" type="radio" name="searchMetod" id="platform" value="platform" th:field="*{option}">
                                         <label class="form-check-label" for="platform">
                                           Platform
                                         </label>
                                     </div>
                                     <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="publisher" value="publisher">
+                                        <input class="form-check-input" type="radio" name="searchMetod" id="publisher" value="publisher" th:field="*{option}">
                                         <label class="form-check-label" for="publisher">
                                          Publisher
                                         </label>
                                     </div>
                                     <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="year" value="year">
+                                        <input class="form-check-input" type="radio" name="searchMetod" id="year" value="year" th:field="*{option}">
                                         <label class="form-check-label" for="year">
                                           Year
                                         </label>
                                     </div>
                                     <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="sales" value="sales">
+                                        <input class="form-check-input" type="radio" name="searchMetod" id="sales" value="eu_sales" th:field="*{option}">
                                         <label class="form-check-label" for="sales">
                                           EU Sales
                                         </label>
@@ -153,18 +153,7 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                      <!--<tr>
-                                          <td>1</td>
-                                          <td>Wii Sports</td>
-                                          <td>Sports</td>
-                                          <td>Wii</td>
-                                          <td>Nintendo</td>
-                                          <td>29.02</td>
-                                          <td>2006</td>
-                                          <td><a class="btn-primary" >Modificar</a>
-                                              <a class="btn-danger" >Eliminar</a></td>
-                                      </tr>-->
-                                      <tr th:each="game, status : ${gameList}">
+                                      <tr th:each="game, status : ${listGames}">
                                         <td th:text="${status.index + 1}" />
                                         <td th:text="${game.name}" />
                                         <td th:text="${game.genre}" />
@@ -172,8 +161,7 @@
                                         <td th:text="${game.publisher}" />
                                         <td th:text="${game.euSales}" />
                                         <td th:text="${game.year}" />
-                                        <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a>
-                                            <a class="btn-danger" th:href="@{/delete(id=${game.id})}">Eliminar</a></td>
+                                        <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
                                     </tr>
 
                                   </tbody>

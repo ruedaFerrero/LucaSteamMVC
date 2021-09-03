@@ -114,8 +114,7 @@
                                             <td th:text="${game.publisher}" />
                                             <td th:text="${game.euSales}" />
                                             <td th:text="${game.year}" />
-                                            <td><a th:href="@{/edit(id=${game.id})}">Modificar</a> | <a
-                                                    th:href="@{/delete(id=${game.id})}">Eliminar</a></td>
+                                            <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
                                         </tr>
                                     </tbody>
 
