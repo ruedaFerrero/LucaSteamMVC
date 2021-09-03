@@ -59,7 +59,7 @@
 							(add/edit)</h1>
 						<div class="px-2">
 
-							<form method="get" th:object="${game}" th:action="@{/save}">
+							<form method="post" th:object="${game}" th:action="@{/save}">
 								<input id="id" th:field="*{id}" type="hidden" />
 								
 								<div class="form-group ">
