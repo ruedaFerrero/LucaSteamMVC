@@ -1,6 +1,8 @@
 package com.mvc.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,12 @@ import com.mvc.spring.model.Game;
 import com.mvc.spring.services.LucaService;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+
 /**
  * LucaSteamApp
  * Controlador de la aplicación. Permite dirigir al usuario a través de las distintas páginas del proyecto y actualizarlas. 
@@ -117,12 +125,29 @@ public class LucaSteamApp {
 	 * @return index.html
 	 */
 	@GetMapping
-	public String mainPage(Model model, Long id){
-		if(id == null || id < 0L){
-			id=0L;
+	public String mainPage(@RequestParam Map<String, Object> param, Model model){			
+		int page = param.get("page") != null ? Integer.valueOf(param.get("page").toString()) -1 : 0;
+		
+		PageRequest pr = PageRequest.of(page, 30);
+		
+		Page<Game> pageGame = service.getAll(pr);
+		
+		int totalPages = pageGame.getTotalPages();
+		if(totalPages>0) {
+			List<Integer> pages = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			model.addAttribute("pages", pages);
 		}
-		model.addAttribute("gameList", service.findFirst10(id));
-		model.addAttribute("id", id);
+		
+		model.addAttribute("gameTotal", service.getAllGames());
+		model.addAttribute("gameList", pageGame.getContent());
+		model.addAttribute("current", page +1);
+		model.addAttribute("prev", page);
+		model.addAttribute("next", page +2);
+		model.addAttribute("last", totalPages);
+		
+		
 		return "index";
 	}
+	
+
 }

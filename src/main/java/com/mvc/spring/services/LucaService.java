@@ -3,6 +3,9 @@ package com.mvc.spring.services;
 import java.io.File;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.mvc.spring.model.Game;
 
 public interface LucaService {
@@ -21,5 +24,7 @@ public interface LucaService {
 	public void deleteGame(Long id);
 	
 	public List<Game> gamesFilteredByGenre(String genre);
+	
+	Page<Game> getAll(Pageable pageable);
 
 }
