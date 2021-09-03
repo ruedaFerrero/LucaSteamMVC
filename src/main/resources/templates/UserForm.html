@@ -7,56 +7,106 @@
 </head>
 <body>
 
-	<section id="cover" class="min-vh-100">
-		<div id="cover-caption">
-			<div class="container">
-				<div class="row text-white">
-					<div class="col-xl-7  mx-auto text-center form ">
-						<h1 class="display-4 text-light">Introduzca un videojuego
-							(add/edit)</h1>
-						<div class="px-2">
+	
+  <main class="cover">
+      
+    <div class="container-fluid">
+           
+        <div class="row">
+               
+            <div class="col-2">
+                <div class="p-3 text-white bg-dark" style="width: 200px;">
+                    <a href="/" class="d-flex align-items-center  mb-md-0 me-md-auto text-white text-decoration-none">
+                      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+                      <span class="fs-4">Main menu</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">
+                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                          Home
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="nav-link text-white">
+                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                          Dashboard
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="nav-link text-white">
+                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                          Orders
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="nav-link text-white">
+                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                          Products
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="nav-link text-white">
+                          <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                          Customers
+                        </a>
+                      </li>
+                    </ul>
+                    <hr>
+                  </div>
+                </div>
+            
+                <div class="b-example-divider"></div>
+                
 
-							<form method="post" th:object="${game}" th:action="@{/save}">
-								<div class="form-group ">
-									<label for="game">Nombre</label> <input type="text"
-										class="form-control" id="game"
-										placeholder="Introduzca el nombre del juego">
-								</div>
+                <div class="col-8">
+                     <div class=" mx-auto text-center form ">
+                        <h1 class="display-4 text-light">Introduzca un videojuego (add/edit)</h1>
+                            <div class="px-2">
+                        
+                        <form  method="post" th:object="${game}" th:action="@{/save}">
+                            <div class="form-group ">
+                                <label for="game">Nombre</label> <input type="text"
+                                    class="form-control" id="game"
+                                    placeholder="Nombre del juego">
+                            </div>
+                
+                            <div class="form-group  ">
+                                <label for="genre">Genero</label> <input type="text"
+                                    class="form-control" id="genre" placeholder="Genero del juego">
+                            </div>
+                
+                            <div class="form-group   ">
+                                <label for="platform">Plataforma</label> <input type="text"
+                                    class="form-control" id="platform" placeholder="Plataforma">
+                            </div>
+                
+                            <div class="form-group ">
+                                <label for="publisher">Publisher</label> <input type="text"
+                                    class="form-control" id="publisher" placeholder="Publisher">
+                            </div>
+                
+                        <div class="form-group ">
+                                <label for="year">Año</label> <input type="number"
+                                    class="form-control" id="year" min="1960" max="2021" placeholder="Año de lanzamiento">
+                            </div>
+                
+                            <div class="form-group  ">
+                                <label for="sales">Ventas</label> <input type="number"
+                                    class="form-control" id="sales" min="0" max="900000000" placeholder="Numero de ventas">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Crear juego</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
 
-								<div class="form-group  ">
-									<label for="genre">Genero</label> <input type="text"
-										class="form-control" id="genre" placeholder="Genero">
-								</div>
 
-								<div class="form-group   ">
-									<label for="platform">Plataforma</label> <input type="text"
-										class="form-control" id="platform" placeholder="Plataforma">
-								</div>
-
-								<div class="form-group ">
-									<label for="publisher">Publisher</label> <input type="text"
-										class="form-control" id="publisher" placeholder="Publisher">
-								</div>
-
-								<div class="form-group ">
-									<label for="year">Anyo</label> <input type="number"
-										class="form-control" id="year" min="1960" max="2021"
-										placeholder="Anyo de lanzamiento">
-								</div>
-
-								<div class="form-group  ">
-									<label for="sales">Ventas</label> <input type="number"
-										class="form-control" id="sales" min="0" max="900000000" placeholder="Numero de ventas">
-								</div>
-								<button type="submit" class="btn btn-primary btn-lg">Crear
-									juego</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+            
+            </div>
+        </div>
+    </main>
 </body>
 </html>
 
