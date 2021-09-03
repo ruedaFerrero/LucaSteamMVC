@@ -1,8 +1,20 @@
 package com.mvc.spring.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+
 import java.io.Serializable;
 
+/**
+ * Game
+ * La clase Game representa un juego en nuestro sistema
+ * @author Julio Rueda
+ * @version 1.0, Septiembre, 2021
+ */
 @Entity
 @Table(name = "Games")
 public class Game implements Serializable {
