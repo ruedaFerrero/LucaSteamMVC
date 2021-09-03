@@ -4,8 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.mvc.spring.model.Game;
 import com.mvc.spring.repository.GameRepository;
@@ -61,6 +66,19 @@ public class LucaServiceImp implements LucaService {
 		return repository.findByName(name);
 	}
 
+	public Game findById(Long id){
+		Optional<Game> val = repository.findById(id);
+		Game out = null;
+		if(val.isPresent())
+			out = val.get();
+		return out;
+	}
+
+	@Override
+	public List<Game> findFirst10(Long index) {
+		return repository.findFirst10ByIdGreaterThan(index);
+	}
+
 	@Override
 	/**
 	 * Elimina un juego por name
@@ -69,8 +87,10 @@ public class LucaServiceImp implements LucaService {
 	 * @version 1.0, Septiembre 2021
 	 * @param name
 	 */
-	public void deleteGame(String name) {
-		repository.delete(repository.findByName(name));
+	public void deleteGame(Long id) {
+		Game game = findById(id);
+		if(game != null)
+			repository.delete(game);
 	}
 
 	@Override
@@ -135,6 +155,12 @@ public class LucaServiceImp implements LucaService {
 		sc.close();
 
 		repository.saveAll(games);
+	}
+
+	@Override
+	public Page<Game> getAll(Pageable pageable) {
+		
+		return repository.findAll(pageable);
 	}
 
 }

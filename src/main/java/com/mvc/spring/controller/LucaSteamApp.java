@@ -1,6 +1,8 @@
 package com.mvc.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,10 @@ import com.mvc.spring.model.Game;
 import com.mvc.spring.services.LucaService;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 /**
@@ -23,7 +29,7 @@ import java.io.File;
 public class LucaSteamApp {
 	
 	@Autowired
-	LucaService service;
+	private LucaService service;
 	
 	/**
 	 * Método que lleva a la página con el formulario para añadir un juego.
@@ -32,7 +38,7 @@ public class LucaSteamApp {
 	 * @version 1.0, Septiembre 2021
 	 * @param m Model
 	 * @param game objeto tipo Game vacío
-	 * @return la página addGameForm
+	 * @return la página UserForm
 	 */
 	@GetMapping("/add")
 	public String newGame(Model m, Game game) {
@@ -78,8 +84,8 @@ public class LucaSteamApp {
 	 * @return la página addGameForm
 	 */
 	@GetMapping("/edit")
-	public String editGame(@RequestParam("name") String name, Model m) {
-		m.addAttribute("game", service.findByName(name));
+	public String editGame(@RequestParam("id") Long id, Model m) {
+		m.addAttribute("game", service.findById(id));
 		return "UserForm";
 	}
 	
@@ -91,10 +97,12 @@ public class LucaSteamApp {
 	 * @param name nombre del juego a eliminar
 	 * @return redirecciona a la página inicial, actualizándola
 	 */
-	@GetMapping("/delete")
-	public String deleteGame(@RequestParam("name") String name) {
-		service.deleteGame(name);
+	@PostMapping("/delete")
+	public String deleteGame(Long id) {
+		if(id!=null)
+		service.deleteGame(id);
 		return("redirect:/");
+		
 	}
 	
 	/**
@@ -131,8 +139,29 @@ public class LucaSteamApp {
 	 * @return index.html
 	 */
 	@GetMapping
-	public String mainPage(Model model){
-		model.addAttribute("gameList", service.getAllGames());
+	public String mainPage(@RequestParam Map<String, Object> param, Model model){			
+		int page = param.get("page") != null ? Integer.valueOf(param.get("page").toString()) -1 : 0;
+		
+		PageRequest pr = PageRequest.of(page, 30);
+		
+		Page<Game> pageGame = service.getAll(pr);
+		
+		int totalPages = pageGame.getTotalPages();
+		if(totalPages>0) {
+			List<Integer> pages = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			model.addAttribute("pages", pages);
+		}
+		
+		model.addAttribute("gameTotal", service.getAllGames());
+		model.addAttribute("gameList", pageGame.getContent());
+		model.addAttribute("current", page +1);
+		model.addAttribute("prev", page);
+		model.addAttribute("next", page +2);
+		model.addAttribute("last", totalPages);
+		
+		
 		return "index";
 	}
+	
+
 }
