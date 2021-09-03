@@ -103,4 +103,10 @@ public class LucaSteamApp {
 		service.loadDataFromFile(new File("vgsales.csv"));
 		return("redirect:/");
 	}
+
+	@GetMapping
+	public String mainPage(Model model){
+		model.addAttribute("gameList", service.getAllGames());
+		return "index";
+	}
 }

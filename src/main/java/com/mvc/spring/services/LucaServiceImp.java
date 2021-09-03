@@ -24,8 +24,8 @@ import com.mvc.spring.repository.GameRepository;
 public class LucaServiceImp implements LucaService {
 
 	@Autowired
-	GameRepository repository;
-
+	private GameRepository repository;
+	
 	@Override
 	/**
 	 * Guarda un juego

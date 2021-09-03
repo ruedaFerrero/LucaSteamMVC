@@ -28,7 +28,6 @@ public interface GameRepository extends JpaRepository<Game, Integer>{
 	 */
 	Game findByName(String name);
 
-
 	/**
 	 * Devuelve una lista de juegos filtrados por su género
 	 * @param genre Género de los juegos que queremos buscar
