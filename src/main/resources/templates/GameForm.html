@@ -1,0 +1,160 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pagina realizada con spring-boot">
+    <title>Data Game LucaSteam</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/sidebars.css}" />
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+      <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">LucaSteam</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" role="button" data-bs-toggle="collapse" href="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <h2 class="text-white">Data Game</h2>
+        <div class="navbar-nav">
+          <div class="nav-item text-nowrap">
+          </div>
+        </div>
+      </header>
+    
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/">
+                            <span data-feather="home"></span>
+                            Home
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" th:href="@{/add}">
+                            <span data-feather="add-game"></span>
+                            Add game
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" th:href="@{/search}">
+                            <span data-feather="search-game"></span>
+                            Search
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <span data-feather="users"></span>
+                            Customers
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <span data-feather="bar-chart-2"></span>
+                            Reports
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">
+                            <span data-feather="layers"></span>
+                            Integrations
+                          </a>
+                        </li>
+                      </ul>
+
+                    </div>
+                </nav>
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <div class="container-fluid overflow-auto">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <form method="post" th:object="${game}" th:action="@{/save}">
+                                <input id="id" th:field="*{id}" type="hidden" />
+
+                                <div class="form-group  mt-3 ">
+                                        <label for="game">Nombre</label> <input type="text"
+                                                class="form-control" id="game" th:field="*{name}"
+                                                placeholder="Nombre del juego">
+                                </div>
+
+                                <div class="form-group mt-3 ">
+                                        <label for="genre">Genero</label> <input type="text"
+                                                class="form-control" id="genre" th:field="*{genre}"
+                                                placeholder="Genero del juego">
+                                </div>
+
+                                <div class="form-group mt-3 ">
+                                        <label for="platform">Plataforma</label> <input type="text"
+                                                class="form-control" id="platform" th:field="*{platform}"
+                                                placeholder="Plataforma">
+                                </div>
+
+                                <div class="form-group mt-3 ">
+                                        <label for="publisher">Publisher</label> <input type="text"
+                                                class="form-control" id="publisher" th:field="*{publisher}"
+                                                placeholder="Publisher">
+                                </div>
+
+                                <div class="form-group mt-3 ">
+                                        <label for="year">Año</label> <input type="number"
+                                                class="form-control" id="year" th:field="*{year}" min="1960"
+                                                max="2021" placeholder="Año de lanzamiento">
+                                </div>
+
+                                <div class="form-group mt-3 ">
+                                        <label for="sales">Ventas</label> <input type="number"
+                                                class="form-control" id="sales" th:field="*{euSales}" min="0"
+                                                step="any" max="900000000" placeholder="Numero de ventas">
+                                </div>
+                                <div class="row mt-5 ">
+                                    
+                                        <div class="col btn-group">
+                                            <button type="submit" class="btn btn-success btn-lg m-4 rounded-3">Guardar Juego</button>
+                                            <button type="submit" id="delete" class="btn btn-danger btn-lg m-4 rounded-3" th:formaction="@{/delete}">Borrar juego</button>
+
+                                        </div>
+
+                                </div>
+                        </form>
+                        </div>
+                    
+                    </div>
+                    
+                
+            
+            </div>
+        </div>
+    
+
+
+    <script th:href="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:href="@{/js/dashboard.js}"></script>
+    <script th:href="@{/js/sidebars.js}"></script>
+  </body>
+</html>
+
+
+

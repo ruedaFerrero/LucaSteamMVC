@@ -43,7 +43,7 @@ public class LucaSteamApp {
 	@GetMapping("/add")
 	public String newGame(Model m, Game game) {
 		m.addAttribute("game", game);
-		return "UserForm";
+		return "GameForm";
 	}
         
         @GetMapping("/search")
@@ -86,7 +86,7 @@ public class LucaSteamApp {
 	@GetMapping("/edit")
 	public String editGame(@RequestParam("id") Long id, Model m) {
 		m.addAttribute("game", service.findById(id));
-		return "UserForm";
+		return "GameForm";
 	}
 	
 	/**
