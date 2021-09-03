@@ -10,8 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.mvc.spring.model.Game;
 import com.mvc.spring.repository.GameRepository;
@@ -158,10 +157,10 @@ public class LucaServiceImp implements LucaService {
 		repository.saveAll(games);
 	}
 
-	public Page<Game> testes(){
-		Page<Game> page = repository.findAll(
-				PageRequest.of(0, 1, Sort.by(Sort.Direction.ASC, "id")));
-
-		return page;
+	@Override
+	public Page<Game> getAll(Pageable pageable) {
+		
+		return repository.findAll(pageable);
 	}
+
 }
