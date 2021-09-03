@@ -18,8 +18,6 @@ import com.mvc.spring.repository.GameRepository;
  * Clase que implementa de la interfaz LucaService los métodos 
  * para trabajar con los datos de la aplicación
  * 
- * @author Jose
- * @version 1.0, Septiembre 2021
  */
 public class LucaServiceImp implements LucaService {
 
@@ -30,6 +28,8 @@ public class LucaServiceImp implements LucaService {
 	/**
 	 * Guarda un juego
 	 * 
+	 * @author Jose
+	 * @version 1.0, Septiembre 2021
 	 * @param game
 	 */
 	public void save(Game game) {
@@ -40,6 +40,8 @@ public class LucaServiceImp implements LucaService {
 	/**
 	 * Devuelve la lista de juegos al completo
 	 * 
+	 * @author Jose
+	 * @version 1.0, Septiembre 2021
 	 * @return List<Game>
 	 */
 	public List<Game> getAllGames() {
@@ -50,6 +52,8 @@ public class LucaServiceImp implements LucaService {
 	/**
 	 * Devuelve un juego de la lista filtrado por nombre
 	 * 
+	 * @author Jose
+	 * @version 1.0, Septiembre 2021
 	 * @param name
 	 * @return Game
 	 */
@@ -61,6 +65,8 @@ public class LucaServiceImp implements LucaService {
 	/**
 	 * Elimina un juego por name
 	 * 
+	 * @author Jose
+	 * @version 1.0, Septiembre 2021
 	 * @param name
 	 */
 	public void deleteGame(String name) {
@@ -71,6 +77,8 @@ public class LucaServiceImp implements LucaService {
 	/**
 	 * Devuelve una List<Game> de juegos filtradas por genre
 	 * 
+	 * @author Jose
+	 * @version 1.0, Septiembre 2021
 	 * @param genre
 	 * @return <List>Game
 	 */
@@ -82,6 +90,8 @@ public class LucaServiceImp implements LucaService {
 	/**
 	 * Carga los datos de la BBDD desde un archivo "file"
 	 * 
+	 * @author Jose
+	 * @version 1.0, Septiembre 2021
 	 * @param file
 	 */
 	public void loadDataFromFile(File file) {
