@@ -45,6 +45,20 @@ public class LucaSteamApp {
 		m.addAttribute("game", game);
 		return "UserForm";
 	}
+        
+        @GetMapping("/search")
+	public String InitsearchGame(Game game) {
+		return "SearchForm";
+	}
+        
+        
+        @PostMapping("/search")
+	public String processSearchGame(@RequestParam("name") String name,Model m) {
+                m.addAttribute("gameList", service.findByName(name));
+		return "SearchForm";
+	}
+        
+        
 	
 	/**
 	 * Método que actualiza la tabla de datos guardando un juego en ella, ya sea añadiéndolo como un juego nuevo o actualizando uno ya existente.
