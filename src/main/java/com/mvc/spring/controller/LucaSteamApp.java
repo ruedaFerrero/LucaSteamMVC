@@ -110,14 +110,15 @@ public class LucaSteamApp {
      */
     @PostMapping("/save")
     public String saveGame(Game game) {
-        service.save(game);
+        if(game.getEuSales() != null && game.getYear() != null && !game.getGenre().equals("") && !game.getName().equals("") && !game.getPlatform().equals("") && !game.getPublisher().equals(""))
+            service.save(game);
         return ("redirect:/");
     }
 
     /**
      * Método que dirige al formulario para editar la información de un juego tomando el nombre del juego a modificar.
      *
-     * @param name nombre del juego a editar
+     * @param id nombre del juego a editar
      * @param m    Model
      * @return la página addGameForm
      * @author Jose
@@ -132,7 +133,7 @@ public class LucaSteamApp {
     /**
      * Método que llama a la función deleteGame(String) de la capa servicios.
      *
-     * @param name nombre del juego a eliminar
+     * @param id nombre del juego a eliminar
      * @return redirecciona a la página inicial, actualizándola
      * @author Jose
      * @version 1.0, Septiembre 2021
