@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -66,6 +65,11 @@ public class LucaServiceImp implements LucaService {
 		return repository.findByName(name);
 	}
 
+	/**
+	 * Busca un juego por su ID
+	 * @param id ID
+	 * @return Juego, si no existe devuelve null
+	 */
 	public Game findById(Long id){
 		Optional<Game> val = repository.findById(id);
 		Game out = null;
@@ -74,14 +78,13 @@ public class LucaServiceImp implements LucaService {
 		return out;
 	}
 
-
 	@Override
 	/**
-	 * Elimina un juego por name
+	 * Elimina un juego por su ID
 	 * 
 	 * @author Jose
 	 * @version 1.0, Septiembre 2021
-	 * @param name
+	 * @param id
 	 */
 	public void deleteGame(Long id) {
 		Game game = findById(id);
@@ -153,36 +156,64 @@ public class LucaServiceImp implements LucaService {
 		repository.saveAll(games);
 	}
 
+	/**
+	 * Devuelve todos los juegos guardados en una lista de paginables
+	 * @param pageable
+	 * @return
+	 */
 	@Override
 	public Page<Game> getAll(Pageable pageable) {
-		
 		return repository.findAll(pageable);
 	}
-        
-        @Override
-        public List<Game> gamesFilteredByName(String name){
-            return repository.findAllByNameContaining(name);
-        }
-        
-        @Override
-        public List<Game> gamesFilteredByPlatform(String name){
-            return repository.findAllByPlatformContaining(name);
-        }
-        
-        @Override
-        public List<Game> gamesFilteredByPublisher(String name){
-            return repository.findAllByPublisherContaining(name);
-        }
-        
-        @Override
-        public List<Game> gamesFilteredByYear(Integer year){
-            return repository.findAllByYear(year);
-        }
-        
-        @Override
-        public List<Game> gamesFilteredByEusales(Double sales){
-            return repository.findAllByEuSales(sales);
-        }
-        
 
+	/**
+	 * Devuelve todos los juegos que contentan en el nombre el parametro dado
+	 * @param name
+	 * @return
+	 */
+	@Override
+    public List<Game> gamesFilteredByName(String name){
+		return repository.findAllByNameContaining(name);
+	}
+
+	/**
+	 * Devuelve todos los juegos cuya plataforma venga dada en el parametro
+	 * @param name
+	 * @return
+	 */
+	@Override
+	public List<Game> gamesFilteredByPlatform(String name){
+		return repository.findAllByPlatformContaining(name);
+	}
+
+	/**
+	 * Devuelve todos los juegos cuyos publishers contentan en el nombre el parametro dado
+	 * @param name
+	 * @return
+	 */
+	@Override
+	public List<Game> gamesFilteredByPublisher(String name){
+		return repository.findAllByPublisherContaining(name);
+	}
+
+	/**
+	 * Devuelve todos los juegos publicados en un año
+	 * @param year
+	 * @return
+	 */
+	@Override
+	public List<Game> gamesFilteredByYear(Integer year){
+		return repository.findAllByYear(year);
+	}
+
+
+	/**
+	 * Devuelve todos los juegos cuyas ventas sean las dadas por parametro
+	 * @param sales
+	 * @return
+	 */
+	@Override
+	public List<Game> gamesFilteredByEusales(Double sales){
+		return repository.findAllByEuSales(sales);
+	}
 }
