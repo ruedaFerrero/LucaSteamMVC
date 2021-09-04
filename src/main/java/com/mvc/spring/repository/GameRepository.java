@@ -35,14 +35,39 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 */
 	List<Game> findAllByGenreContaining(String genre);
 
+	/**
+	 * Devuelve una lista de juegos filtrados por su nombre
+	 * @param name Nombre completo o parte del nombre de los juegos que buscamos
+	 * @return Lista de juegos
+	 */
 	List<Game> findAllByNameContaining(String name);
-        
-        List<Game> findAllByPlatformContaining(String name);
-        
-        List<Game> findAllByPublisherContaining(String name);
-        
-        List<Game> findAllByYear(Integer name);
-        
-        List<Game> findAllByEuSales(Double name);
-        
+
+	/**
+	 * Devuelve una lista de juegos filtrados por su plataforma
+	 * @param name Nombre completo o parte del nombre de la plataforma
+	 * @return Lista de juegos
+	 */
+	List<Game> findAllByPlatformContaining(String name);
+
+	/**
+	 * Devuelve una lista de juegos filtrados por su publisher
+	 * @param name Nombre completo o parte del nombre del publisher
+	 * @return Lista de juegos
+	 */
+    List<Game> findAllByPublisherContaining(String name);
+
+	/**
+	 * Devuelve una lista de juegos filtrados por su año de lanzamiento
+	 * @param year Año de lanzamiento
+	 * @return Lista de juegos
+	 */
+    List<Game> findAllByYear(Integer year);
+
+	/**
+	 * Devuelve una lista de juegos filtrados por sus ventas
+	 * @param sales Número de ventas del juego
+	 * @return Lista de juegos
+	 */
+    List<Game> findAllByEuSales(Double sales);
+
 }
