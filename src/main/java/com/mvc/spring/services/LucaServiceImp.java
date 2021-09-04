@@ -206,7 +206,6 @@ public class LucaServiceImp implements LucaService {
 		return repository.findAllByYear(year);
 	}
 
-
 	/**
 	 * Devuelve todos los juegos cuyas ventas sean las dadas por parametro
 	 * @param sales
