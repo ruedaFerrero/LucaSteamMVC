@@ -1,188 +1,168 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Pagina realizada con spring-boot">
-    <title>LucaSteam</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="Pagina realizada con spring-boot" name="description">
+    <title>Búsqueda - LucaSteam</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/sidebars.css}" />
-    <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
-    <link rel="stylesheet" th:href="@{/css/dropdowns.css}" />
-
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/sidebars.css}"/>
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}"/>
+    <link rel="stylesheet" th:href="@{/css/dropdowns.css}"/>
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
-      }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
     </style>
-  </head>
-  <body>
-      <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">LucaSteam</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" role="button" data-bs-toggle="collapse" href="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <h2 class="text-white" th:text="'Search Game ' + (*{query.text != null}? *{query.text} : '')"></h2>
-        <div class="navbar-nav">
-          <div class="nav-item text-nowrap">
-          </div>
+</head>
+<body>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">LucaSteam</a>
+    <button aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler position-absolute d-md-none collapsed" data-bs-toggle="collapse" href="#sidebarMenu" role="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <h2 class="text-white" th:text="'Búsqueda ' + (*{query.text != null}? *{query.text} : '')"></h2>
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
         </div>
-      </header>
-    
-        <div class="container-fluid">
-            <div class="row">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                    <div class="position-sticky pt-3">
-                      <ul class="nav flex-column">
-                        <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="/">
+    </div>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" id="sidebarMenu">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active" href="/">
                             <span data-feather="home"></span>
-                            Home
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" th:href="@{/add}">
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/add}">
                             <span data-feather="add-game"></span>
-                            Add game
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" th:href="@{/search}">
+                            Añadir Juego
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/search}">
                             <span data-feather="search-game"></span>
-                            Search
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="users"></span>
-                            Customers
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2"></span>
-                            Reports
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">
-                            <span data-feather="layers"></span>
-                            Integrations
-                          </a>
-                        </li>
-                      </ul>
+                            Búsqueda
+                        </a>
+                    </li>
+                </ul>
 
-                    </div>
-                </nav>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div class="container-fluid overflow-auto">
-                        <div class="row">
-                            <form class="form-inline pt-4" th:object="${query}" method="post">
-                                <div class="row g-3">
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" placeholder="Text Search" aria-label="Text-search" id="search" th:field="*{text}">
-                                    </div>
-                                    <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="name" value="name" checked th:field="*{option}">
-                                        <label class="form-check-label" for="name">
-                                          Name
-                                        </label>
-                                    </div>
-                                    <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="genre" value="genre" th:field="*{option}">
-                                        <label class="form-check-label" for="genre">
-                                          Genre
-                                        </label>
-                                    </div>
-                                    <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="platform" value="platform" th:field="*{option}">
-                                        <label class="form-check-label" for="platform">
-                                          Platform
-                                        </label>
-                                    </div>
-                                    <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="publisher" value="publisher" th:field="*{option}">
-                                        <label class="form-check-label" for="publisher">
-                                         Publisher
-                                        </label>
-                                    </div>
-                                    <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="year" value="year" th:field="*{option}">
-                                        <label class="form-check-label" for="year">
-                                          Year
-                                        </label>
-                                    </div>
-                                    <div class="form-check col form-control-color">
-                                        <input class="form-check-input" type="radio" name="searchMetod" id="sales" value="eu_sales" th:field="*{option}">
-                                        <label class="form-check-label" for="sales">
-                                          EU Sales
-                                        </label>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary" }>Search</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="row">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-sm">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">#</th>
-                                      <th scope="col">Name</th>
-                                      <th scope="col">Genre</th>
-                                      <th scope="col">Platform</th>
-                                      <th scope="col">Publisher</th>
-                                      <th scope="col">eu_sales</th>
-                                      <th scope="col">year</th>
-                                      <th scope="col">actions</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                      <tr th:each="game, status : ${listGames}">
-                                        <td th:text="${status.index + 1}" />
-                                        <td th:text="${game.name}" />
-                                        <td th:text="${game.genre}" />
-                                        <td th:text="${game.platform}" />
-                                        <td th:text="${game.publisher}" />
-                                        <td th:text="${game.euSales}" />
-                                        <td th:text="${game.year}" />
-                                        <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
-                                    </tr>
-
-                                  </tbody>
-                                </table>
-                              </div>
-                        </div>
-                    </div>
-                    <div>
-                        
-                    </div>
-                    
-                    
-                    
-                </main>
             </div>
-        </div>
-    
+        </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="container-fluid overflow-auto">
+                <div class="row">
+                    <form class="form-inline pt-4" method="post" th:object="${query}">
+                        <div class="row g-3">
+                            <div class="col-sm-4">
+                                <input aria-label="text-search" class="form-control" id="search"
+                                       placeholder="Nueva Búsqueda" th:field="*{text}" type="text">
+                            </div>
+                            <div class="form-check col form-control-color">
+                                <input checked class="form-check-input" id="name" name="searchMetod" th:field="*{option}"
+                                       type="radio" value="name">
+                                <label class="form-check-label" for="name">
+                                    Nombre
+                                </label>
+                            </div>
+                            <div class="form-check col form-control-color">
+                                <input class="form-check-input" id="genre" name="searchMetod" th:field="*{option}" type="radio"
+                                       value="genre">
+                                <label class="form-check-label" for="genre">
+                                    Género
+                                </label>
+                            </div>
+                            <div class="form-check col form-control-color">
+                                <input class="form-check-input" id="platform" name="searchMetod" th:field="*{option}"
+                                       type="radio" value="platform">
+                                <label class="form-check-label" for="platform">
+                                    Plataforma
+                                </label>
+                            </div>
+                            <div class="form-check col form-control-color">
+                                <input class="form-check-input" id="publisher" name="searchMetod" th:field="*{option}"
+                                       type="radio" value="publisher">
+                                <label class="form-check-label" for="publisher">
+                                    Editora
+                                </label>
+                            </div>
+                            <div class="form-check col form-control-color">
+                                <input class="form-check-input" id="year" name="searchMetod" th:field="*{option}" type="radio"
+                                       value="year">
+                                <label class="form-check-label" for="year">
+                                    Año
+                                </label>
+                            </div>
+                            <div class="form-check col form-control-color">
+                                <input class="form-check-input" id="sales" name="searchMetod" th:field="*{option}"
+                                       type="radio" value="eu_sales">
+                                <label class="form-check-label" for="sales">
+                                    Ventas
+                                </label>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-primary" type="submit" }>Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Género</th>
+                                <th scope="col">Plataforma</th>
+                                <th scope="col">Editora</th>
+                                <th scope="col">Año</th>
+                                <th scope="col">Ventas Europeas</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="game, status : ${listGames}">
+                                <td th:text="${status.index + 1}"/>
+                                <td th:text="${game.name}"/>
+                                <td th:text="${game.genre}"/>
+                                <td th:text="${game.platform}"/>
+                                <td th:text="${game.publisher}"/>
+                                <td th:text="${game.year}"/>
+                                <td th:text="${game.euSales}"/>
+                                <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
+                            </tr>
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
 
-    <script th:href="@{/js/bootstrap.bundle.min.js}"></script>
-    <script th:href="@{/js/dashboard.js}"></script>
-    <script th:href="@{/js/sidebars.js}"></script>
-  </body>
+<script th:href="@{/js/bootstrap.bundle.min.js}"></script>
+<script th:href="@{/js/dashboard.js}"></script>
+<script th:href="@{/js/sidebars.js}"></script>
+</body>
 </html>
