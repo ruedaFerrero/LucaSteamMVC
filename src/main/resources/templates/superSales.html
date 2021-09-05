@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Pagina realizada con spring-boot" name="description">
-    <title>Búsqueda - LucaSteam</title>
+    <title>Juegos Super Ventas - LucaSteam</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/sidebars.css}"/>
     <link rel="stylesheet" th:href="@{/css/dashboard.css}"/>
-    <link rel="stylesheet" th:href="@{/css/dropdowns.css}"/>
+
 
     <style>
         .bd-placeholder-img {
@@ -35,7 +35,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <h2 class="text-white" th:text="'Búsqueda ' + (*{query.text != null}? *{query.text} : '')"></h2>
+    <h2 class="text-white">Juegos Super Ventas</h2>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
         </div>
@@ -60,14 +60,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/search}">
+                        <a class="nav-link" th:href="@{/search}">
                             <span data-feather="search-game"></span>
                             Búsqueda
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publishers}">
-                            <span data-feather="search-game"></span>
+                            <span data-feather="publishers-game"></span>
                             Listado de Editoras
                         </a>
                     </li>
@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/superventas}">
+                        <a class="nav-link active" th:href="@{/superventas}">
                             <span data-feather="superventas-game"></span>
                             Juegos Super Ventas
                         </a>
@@ -90,62 +90,7 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="container-fluid overflow-auto">
                 <div class="row">
-                    <form class="form-inline pt-4" method="post" th:object="${query}">
-                        <div class="row g-3">
-                            <div class="col-sm-4">
-                                <input aria-label="text-search" class="form-control" id="search"
-                                       placeholder="Nueva Búsqueda" th:field="*{text}" type="text">
-                            </div>
-                            <div class="form-check col form-control-color">
-                                <input checked class="form-check-input" id="name" name="searchMetod" th:field="*{option}"
-                                       type="radio" value="name">
-                                <label class="form-check-label" for="name">
-                                    Nombre
-                                </label>
-                            </div>
-                            <div class="form-check col form-control-color">
-                                <input class="form-check-input" id="genre" name="searchMetod" th:field="*{option}" type="radio"
-                                       value="genre">
-                                <label class="form-check-label" for="genre">
-                                    Género
-                                </label>
-                            </div>
-                            <div class="form-check col form-control-color">
-                                <input class="form-check-input" id="platform" name="searchMetod" th:field="*{option}"
-                                       type="radio" value="platform">
-                                <label class="form-check-label" for="platform">
-                                    Plataforma
-                                </label>
-                            </div>
-                            <div class="form-check col form-control-color">
-                                <input class="form-check-input" id="publisher" name="searchMetod" th:field="*{option}"
-                                       type="radio" value="publisher">
-                                <label class="form-check-label" for="publisher">
-                                    Editora
-                                </label>
-                            </div>
-                            <div class="form-check col form-control-color">
-                                <input class="form-check-input" id="year" name="searchMetod" th:field="*{option}" type="radio"
-                                       value="year">
-                                <label class="form-check-label" for="year">
-                                    Año
-                                </label>
-                            </div>
-                            <div class="form-check col form-control-color">
-                                <input class="form-check-input" id="sales" name="searchMetod" th:field="*{option}"
-                                       type="radio" value="eu_sales">
-                                <label class="form-check-label" for="sales">
-                                    Ventas
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-primary" type="submit" }>Buscar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <h4 class="py-3" th:text="(*{query.text != null}? 'Encontrados '+ *{totalGames} + ' resultados' : '')"></h4>
+                    
                 </div>
                 <div class="row">
                     <div class="table-responsive">
@@ -162,7 +107,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="game, status : ${listGames}">
+                            <tr th:each="game, status : ${gamesList}">
                                 <td th:text="${status.index + 1}"/>
                                 <td th:text="${game.name}"/>
                                 <td th:text="${game.genre}"/>
@@ -182,8 +127,12 @@
     </div>
 </div>
 
+
 <script th:href="@{/js/bootstrap.bundle.min.js}"></script>
 <script th:href="@{/js/dashboard.js}"></script>
 <script th:href="@{/js/sidebars.js}"></script>
 </body>
 </html>
+
+
+

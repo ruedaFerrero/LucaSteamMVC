@@ -223,4 +223,20 @@ public class LucaServiceImp implements LucaService {
 	public List<String> getAllPublishers() {
 		return repository.findAllPublishers();
 	}
+        
+        /**
+	 * Devuelve la lista de todos juegos lanzados en año par
+	 * @return List<Game> Lista de juegos
+	 */
+	public List<Game> getAllYearPairGames() {
+		return repository.findAllYearPairGames();
+	}
+        
+        /**
+	 * Devuelve la lista de todos los juegos con ventas superiores a la media
+	 * @return List<Game> Lista de juegos
+	 */
+	public List<Game> getAllSuperSalesGames() {
+		return repository.findAllSuperSalesGames();
+	}
 }
