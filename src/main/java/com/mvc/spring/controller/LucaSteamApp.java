@@ -217,7 +217,7 @@ public class LucaSteamApp {
         model.addAttribute("publisherList", service.getAllPublishers());
         return "editorList";
     }
-    
+
     /**
      * Carga la página que muestra todos los juegos lanzados en año par
      * @param model
@@ -235,9 +235,26 @@ public class LucaSteamApp {
      * @return superSales.html
      */
     @GetMapping("/superventas")
-    public String getSuperSalesGames(Model model){
+    public String getSuperSalesGames(Model model) {
         model.addAttribute("totalGames", service.getAllSuperSalesGames().size());
         model.addAttribute("gamesList", service.getAllSuperSalesGames());
         return "superSales";
+    }
+
+    /**
+     * Carga la página que muestra todos los juegos de las consolas de nintendo
+     * @param model
+     * @return
+     */
+    @GetMapping("/nintendoGames")
+    public String getNintendoGames(Model model){
+        model.addAttribute("nintendoGames", service.getAllNintendoConsoleGames());
+        return "nintendoList";
+    }
+
+    @GetMapping("/20thCenturyGame")
+    public String getGames20Century(Model model){
+        model.addAttribute("gameList",service.getAllGamesReleasedIn20Century());
+        return "centuryXXList";
     }
 }

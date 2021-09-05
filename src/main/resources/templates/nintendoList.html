@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Pagina realizada con spring-boot" name="description">
-    <title>Juegos Super Ventas - LucaSteam</title>
+    <title>Juegos de Nintendo - LucaSteam</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/sidebars.css}"/>
     <link rel="stylesheet" th:href="@{/css/dashboard.css}"/>
-
 
     <style>
         .bd-placeholder-img {
@@ -35,7 +34,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <h2 class="text-white">Juegos Super Ventas</h2>
+    <h2 class="text-white">Listado de juegos de las consolas de Nintendo</h2>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
         </div>
@@ -67,7 +66,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publishers}">
-                            <span data-feather="publishers-game"></span>
+                            <span data-feather="search-game"></span>
                             Listado de Editoras
                         </a>
                     </li>
@@ -78,13 +77,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/superventas}">
+                        <a class="nav-link" th:href="@{/superventas}">
                             <span data-feather="superventas-game"></span>
                             Juegos Super Ventas
                         </a>
                     </li>
-                    <li >
-                        <a class="nav-link" th:href="@{/nintendoGames}">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/nintendoGames}">
                             <span data-feather="search-game"></span>
                             Juegos de consolas de Nintendo
                         </a>
@@ -96,13 +95,11 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="container-fluid overflow-auto">
                 <div class="row">
-                    
                 </div>
                 <div class="row">
                     <div class="table-responsive">
@@ -119,8 +116,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="game, status : ${gamesList}">
-                                <td th:text="${status.index + 1}"/>
+                            <tr th:each="game, status : ${nintendoGames}">
+                                <td th:text="${status.index + 1 }"/>
                                 <td th:text="${game.name}"/>
                                 <td th:text="${game.genre}"/>
                                 <td th:text="${game.platform}"/>
@@ -129,7 +126,6 @@
                                 <td th:text="${game.euSales}"/>
                                 <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -139,12 +135,8 @@
     </div>
 </div>
 
-
 <script th:href="@{/js/bootstrap.bundle.min.js}"></script>
 <script th:href="@{/js/dashboard.js}"></script>
 <script th:href="@{/js/sidebars.js}"></script>
 </body>
 </html>
-
-
-
