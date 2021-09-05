@@ -172,7 +172,7 @@ public class LucaServiceImp implements LucaService {
 	 * @return
 	 */
 	@Override
-    public List<Game> gamesFilteredByName(String name){
+        public List<Game> gamesFilteredByName(String name){
 		return repository.findAllByNameContaining(name);
 	}
 

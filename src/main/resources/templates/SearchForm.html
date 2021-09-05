@@ -48,7 +48,7 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a aria-current="page" class="nav-link active" href="/">
+                        <a aria-current="page" class="nav-link" href="/">
                             <span data-feather="home"></span>
                             Inicio
                         </a>
@@ -60,7 +60,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/search}">
+                        <a class="nav-link active" th:href="@{/search}">
                             <span data-feather="search-game"></span>
                             Búsqueda
                         </a>
@@ -125,6 +125,9 @@
                             </div>
                         </div>
                     </form>
+                </div>
+                <div class="row">
+                    <h4 class="py-3" th:text="(*{query.text != null}? 'Encontrados '+ *{totalGames} + ' resultados' : '')"></h4>
                 </div>
                 <div class="row">
                     <div class="table-responsive">
