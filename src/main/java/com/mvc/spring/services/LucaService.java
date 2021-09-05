@@ -36,8 +36,10 @@ public interface LucaService {
 	public List<Game> gamesFilteredByEusales(Double sales);
 
 	public List<String> getAllPublishers();
+
+  public List<Game> getAllYearPairGames();
         
-        public List<Game> getAllYearPairGames();
-        
-        public List<Game> getAllSuperSalesGames();
+  public List<Game> getAllSuperSalesGames();
+
+	public List<Game> getAllNintendoConsoleGames();
 }

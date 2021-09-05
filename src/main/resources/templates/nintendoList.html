@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Pagina realizada con spring-boot" name="description">
-    <title>Editoras - LucaSteam</title>
+    <title>Juegos de Nintendo - LucaSteam</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/sidebars.css}"/>
@@ -34,7 +34,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <h2 class="text-white">Listado de Editoras</h2>
+    <h2 class="text-white">Listado de juegos de las consolas de Nintendo</h2>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
         </div>
@@ -65,27 +65,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active active" th:href="@{/publishers}">
+                        <a class="nav-link" th:href="@{/publishers}">
                             <span data-feather="search-game"></span>
                             Listado de Editoras
                         </a>
                     </li>
                     <li class="nav-item">
-
-                        <a class="nav-link" th:href="@{/yearpair}">
-                            <span data-feather="yearpair-game"></span>
-                            Juegos de Año Par
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/superventas}">
-                            <span data-feather="superventas-game"></span>
-                            Juegos Super Ventas
-
-                        <a class="nav-link" th:href="@{/nintendoGames}">
+                        <a class="nav-link active" th:href="@{/nintendoGames}">
                             <span data-feather="search-game"></span>
                             Juegos de consolas de Nintendo
-
                         </a>
                     </li>
                 </ul>
@@ -102,12 +90,23 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
+                                <th scope="col">Género</th>
+                                <th scope="col">Plataforma</th>
+                                <th scope="col">Editora</th>
+                                <th scope="col">Año</th>
+                                <th scope="col">Ventas Europeas</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="publisher, status : ${publisherList}">
+                            <tr th:each="game, status : ${nintendoGames}">
                                 <td th:text="${status.index + 1 }"/>
-                                <td th:text="${publisher}"/>
+                                <td th:text="${game.name}"/>
+                                <td th:text="${game.genre}"/>
+                                <td th:text="${game.platform}"/>
+                                <td th:text="${game.publisher}"/>
+                                <td th:text="${game.year}"/>
+                                <td th:text="${game.euSales}"/>
+                                <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
                             </tr>
                             </tbody>
                         </table>
