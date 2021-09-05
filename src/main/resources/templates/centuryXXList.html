@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Pagina realizada con spring-boot" name="description">
-    <title>Juegos Super Ventas - LucaSteam</title>
+    <title>Juegos Lanzados en el siglo XX - LucaSteam</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/sidebars.css}"/>
@@ -35,7 +35,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <h2 class="text-white">Juegos Super Ventas</h2>
+    <h2 class="text-white">Juegos Lanzados en el siglo XX</h2>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
         </div>
@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/superventas}">
+                        <a class="nav-link" th:href="@{/superventas}">
                             <span data-feather="superventas-game"></span>
                             Juegos Super Ventas
                         </a>
@@ -90,7 +90,7 @@
                         </a>
                     </li>
                     <li >
-                        <a class="nav-link" th:href="@{/20thCenturyGame}">
+                        <a class="nav-link active" th:href="@{/20thCenturyGame}">
                             <span data-feather="search-game"></span>
                             Juegos del siglo XX
                         </a>
@@ -102,7 +102,6 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="container-fluid overflow-auto">
                 <div class="row">
-                    
                 </div>
                 <div class="row">
                     <div class="table-responsive">
@@ -119,7 +118,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="game, status : ${gamesList}">
+                            <tr th:each="game, status : ${gameList}">
                                 <td th:text="${status.index + 1}"/>
                                 <td th:text="${game.name}"/>
                                 <td th:text="${game.genre}"/>

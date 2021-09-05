@@ -218,7 +218,6 @@ public class LucaSteamApp {
         return "editorList";
     }
 
-    
     /**
      * Carga la página que muestra todos los juegos lanzados en año par
      * @param model
@@ -251,5 +250,11 @@ public class LucaSteamApp {
     public String getNintendoGames(Model model){
         model.addAttribute("nintendoGames", service.getAllNintendoConsoleGames());
         return "nintendoList";
+    }
+
+    @GetMapping("/20thCenturyGame")
+    public String getGames20Century(Model model){
+        model.addAttribute("gameList",service.getAllGamesReleasedIn20Century());
+        return "centuryXXList";
     }
 }

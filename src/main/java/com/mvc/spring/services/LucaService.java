@@ -41,5 +41,7 @@ public interface LucaService {
         
   public List<Game> getAllSuperSalesGames();
 
-	public List<Game> getAllNintendoConsoleGames();
+  public List<Game> getAllNintendoConsoleGames();
+
+  public List<Game> getAllGamesReleasedIn20Century();
 }
