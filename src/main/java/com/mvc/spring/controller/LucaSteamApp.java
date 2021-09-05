@@ -218,8 +218,31 @@ public class LucaSteamApp {
         return "editorList";
     }
 
+    
     /**
-     * arga la página que muestra todos los juegos de las consolas de nintendo
+     * Carga la página que muestra todos los juegos lanzados en año par
+     * @param model
+     * @return yearPairList.html
+     */
+    @GetMapping("/yearpair")
+    public String getYearPairGames(Model model){
+        model.addAttribute("gamesList", service.getAllYearPairGames());
+        return "yearPairList";
+    }
+    
+    /**
+     * Carga la página que muestra todos los juegos con ventas superiores a la media
+     * @param model
+     * @return superSales.html
+     */
+    @GetMapping("/superventas")
+    public String getSuperSalesGames(Model model){
+        model.addAttribute("totalGames", service.getAllSuperSalesGames().size());
+        model.addAttribute("gamesList", service.getAllSuperSalesGames());
+        return "superSales";
+
+    /**
+     * Carga la página que muestra todos los juegos de las consolas de nintendo
      * @param model
      * @return
      */
@@ -227,5 +250,6 @@ public class LucaSteamApp {
     public String getNintendoGames(Model model){
         model.addAttribute("nintendoGames", service.getAllNintendoConsoleGames());
         return "nintendoList";
+
     }
 }

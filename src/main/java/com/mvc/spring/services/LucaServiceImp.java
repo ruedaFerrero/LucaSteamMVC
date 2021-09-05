@@ -222,7 +222,22 @@ public class LucaServiceImp implements LucaService {
 	 */
 	public List<String> getAllPublishers() {
 		return repository.findAllPublishers();
+	}   
+   /**
+	 * Devuelve la lista de todos juegos lanzados en año par
+	 * @return List<Game> Lista de juegos
+	 */
+	public List<Game> getAllYearPairGames() {
+		return repository.findAllYearPairGames();
 	}
+        
+        /**
+	 * Devuelve la lista de todos los juegos con ventas superiores a la media
+	 * @return List<Game> Lista de juegos
+	 */
+	public List<Game> getAllSuperSalesGames() {
+		return repository.findAllSuperSalesGames();
+
 
 	/**
 	 * Devuelve una lista de todos los juegos para consola de nintendo
@@ -230,5 +245,6 @@ public class LucaServiceImp implements LucaService {
 	 */
 	public List<Game> getAllNintendoConsoleGames(){
 		return repository.getAllNintendoConsoleGames("wii", "nes", "gb", "ds", "snes");
+
 	}
 }

@@ -78,6 +78,20 @@ public interface GameRepository extends JpaRepository<Game, Long>{
     @Query("SELECT distinct publisher from Game")
     List<String> findAllPublishers();
 
+    /**
+	 * Devuelve la lista de todos juegos lanzados en año par
+	 * @return List<Game> Lista de juegos
+	 */
+    @Query("SELECT gameyearpair FROM Game gameyearpair WHERE gameyearpair.year%2 = 0")
+    List<Game> findAllYearPairGames();
+    
+    /**
+	 * Devuelve la lista de todos juegos con ventas superiores a la media
+	 * @return List<Game> Lista de juegos
+	 */
+    @Query("select g from Game g where g.euSales > (select avg(e.euSales) from Game e)")
+    List<Game> findAllSuperSalesGames();
+
 	/**
 	 * Devuelve una lista de todos los juegos para consola de nintendo
 	 * @return
