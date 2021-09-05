@@ -236,10 +236,11 @@ public class LucaSteamApp {
      * @return superSales.html
      */
     @GetMapping("/superventas")
-    public String getSuperSalesGames(Model model){
+    public String getSuperSalesGames(Model model) {
         model.addAttribute("totalGames", service.getAllSuperSalesGames().size());
         model.addAttribute("gamesList", service.getAllSuperSalesGames());
         return "superSales";
+    }
 
     /**
      * Carga la página que muestra todos los juegos de las consolas de nintendo
@@ -250,6 +251,5 @@ public class LucaSteamApp {
     public String getNintendoGames(Model model){
         model.addAttribute("nintendoGames", service.getAllNintendoConsoleGames());
         return "nintendoList";
-
     }
 }

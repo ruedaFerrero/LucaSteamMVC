@@ -237,6 +237,7 @@ public class LucaServiceImp implements LucaService {
 	 */
 	public List<Game> getAllSuperSalesGames() {
 		return repository.findAllSuperSalesGames();
+	}
 
 
 	/**
