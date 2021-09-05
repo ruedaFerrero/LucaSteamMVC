@@ -77,4 +77,11 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 */
     @Query("SELECT distinct publisher from Game")
     List<String> findAllPublishers();
+
+	/**
+	 * Devuelve una lista de todos los juegos para consola de nintendo
+	 * @return
+	 */
+    @Query("select g from Game g where LOWER(g.platform)=?1 or LOWER(g.platform)=?2 or LOWER(g.platform)=?3 or LOWER(g.platform)=?4 or LOWER(g.platform)=?5")
+	List<Game> getAllNintendoConsoleGames(String wii, String NES, String GB, String DS, String SNES);
 }

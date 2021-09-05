@@ -223,4 +223,12 @@ public class LucaServiceImp implements LucaService {
 	public List<String> getAllPublishers() {
 		return repository.findAllPublishers();
 	}
+
+	/**
+	 * Devuelve una lista de todos los juegos para consola de nintendo
+	 * @return
+	 */
+	public List<Game> getAllNintendoConsoleGames(){
+		return repository.getAllNintendoConsoleGames("wii", "nes", "gb", "ds", "snes");
+	}
 }

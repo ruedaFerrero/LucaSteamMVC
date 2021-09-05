@@ -217,4 +217,15 @@ public class LucaSteamApp {
         model.addAttribute("publisherList", service.getAllPublishers());
         return "editorList";
     }
+
+    /**
+     * arga la página que muestra todos los juegos de las consolas de nintendo
+     * @param model
+     * @return
+     */
+    @GetMapping("/nintendoGames")
+    public String getNintendoGames(Model model){
+        model.addAttribute("nintendoGames", service.getAllNintendoConsoleGames());
+        return "nintendoList";
+    }
 }
