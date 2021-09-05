@@ -215,4 +215,12 @@ public class LucaServiceImp implements LucaService {
 	public List<Game> gamesFilteredByEusales(Double sales){
 		return repository.findAllByEuSales(sales);
 	}
+
+	/**
+	 * Devuelve la lista de todas las editoras
+	 * @return
+	 */
+	public List<String> getAllPublishers() {
+		return repository.findAllPublishers();
+	}
 }
