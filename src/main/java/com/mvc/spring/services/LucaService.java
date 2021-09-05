@@ -34,4 +34,6 @@ public interface LucaService {
 	public List<Game> gamesFilteredByYear(Integer year);
         
 	public List<Game> gamesFilteredByEusales(Double sales);
+
+	public List<String> getAllPublishers();
 }

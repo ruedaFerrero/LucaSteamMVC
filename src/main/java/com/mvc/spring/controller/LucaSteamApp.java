@@ -57,6 +57,9 @@ public class LucaSteamApp {
     //Post route of the search page, gets and process the query
     @PostMapping("/search")
     public String processSearchGame(QueryInfo query, Model m) {
+        if(query.getText().equals(""))
+            return ("redirect:/search");
+
         System.out.println("###########");
         System.out.println("text: " + query.getText() + " option: " + query.getOption());
         System.out.println("###########");
@@ -202,5 +205,16 @@ public class LucaSteamApp {
         model.addAttribute("next", page + 2);
         model.addAttribute("last", totalPages);
         return "index";
+    }
+
+    /**
+     * Carga la página que muestra todos los editores
+     * @param model
+     * @return
+     */
+    @GetMapping("/publishers")
+    public String getPublishers(Model model){
+        model.addAttribute("publisherList", service.getAllPublishers());
+        return "editorList";
     }
 }
