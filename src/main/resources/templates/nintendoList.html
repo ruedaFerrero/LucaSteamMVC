@@ -106,6 +106,7 @@
                                 <td th:text="${game.publisher}"/>
                                 <td th:text="${game.year}"/>
                                 <td th:text="${game.euSales}"/>
+                                <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
                             </tr>
                             </tbody>
                         </table>
