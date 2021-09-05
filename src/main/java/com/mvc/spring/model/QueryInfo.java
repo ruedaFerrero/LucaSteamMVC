@@ -8,7 +8,7 @@ package com.mvc.spring.model;
 /**
  * QueryInfo
  * La clase Query Info modela una búsqueda del usuario en el sistema
- * @author miso
+ * @author George
  * @version 1.0, Septiembre, 2021
  */
 public class QueryInfo {

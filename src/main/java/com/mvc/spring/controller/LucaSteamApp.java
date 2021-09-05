@@ -100,6 +100,7 @@ public class LucaSteamApp {
         }
         m.addAttribute("query", query);
         m.addAttribute("listGames", listGames);
+        m.addAttribute("totalGames", listGames.size());
         return "SearchForm";
     }
 
