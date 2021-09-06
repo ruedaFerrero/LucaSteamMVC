@@ -4,12 +4,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Pagina realizada con spring-boot" name="description">
-    <title>Edición de Juegos - LucaSteam</title>
+    <title>Juegos de Nintendo - LucaSteam</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/sidebars.css}"/>
     <link rel="stylesheet" th:href="@{/css/dashboard.css}"/>
-
 
     <style>
         .bd-placeholder-img {
@@ -35,7 +34,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <h2 class="text-white">Edición de Juegos</h2>
+    <h2 class="text-white">Listado de juegos de las consolas de Nintendo</h2>
     <div class="navbar-nav">
         <div class="nav-item text-nowrap">
         </div>
@@ -54,7 +53,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/add}">
+                        <a class="nav-link" th:href="@{/add}">
                             <span data-feather="add-game"></span>
                             Añadir Juego
                         </a>
@@ -72,7 +71,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-
                         <a class="nav-link" th:href="@{/yearpair}">
                             <span data-feather="yearpair-game"></span>
                             Juegos de Año Par
@@ -84,8 +82,8 @@
                             Juegos Super Ventas
                         </a>
                     </li>
-                    <li >
-                        <a class="nav-link" th:href="@{/nintendoGames}">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/nintendoGames}">
                             <span data-feather="search-game"></span>
                             Juegos de consolas de Nintendo
                         </a>
@@ -97,7 +95,6 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -105,72 +102,41 @@
                 <div class="row">
                 </div>
                 <div class="row">
-                    <form method="post" th:action="@{/save}" th:object="${game}">
-                        <input id="id" th:field="*{id}" type="hidden"/>
-
-                        <div class="form-group  mt-3 ">
-                            <label for="game">Nombre</label> <input class="form-control"
-                                                                    id="game" placeholder="Nombre del juego" th:field="*{name}"
-                                                                    type="text">
-                        </div>
-
-                        <div class="form-group mt-3 ">
-                            <label for="genre">Genero</label> <input class="form-control"
-                                                                     id="genre" placeholder="Genero del juego" th:field="*{genre}"
-                                                                     type="text">
-                        </div>
-
-                        <div class="form-group mt-3 ">
-                            <label for="platform">Plataforma</label> <input class="form-control"
-                                                                            id="platform" placeholder="Plataforma"
-                                                                            th:field="*{platform}"
-                                                                            type="text">
-                        </div>
-
-                        <div class="form-group mt-3 ">
-                            <label for="publisher">Publisher</label> <input class="form-control"
-                                                                            id="publisher" placeholder="Publisher"
-                                                                            th:field="*{publisher}"
-                                                                            type="text">
-                        </div>
-
-                        <div class="form-group mt-3 ">
-                            <label for="year">Año</label> <input class="form-control"
-                                                                 id="year" max="2021" min="1960"
-                                                                 placeholder="Año de lanzamiento"
-                                                                 th:field="*{year}" type="number">
-                        </div>
-
-                        <div class="form-group mt-3 ">
-                            <label for="sales">Ventas</label> <input class="form-control"
-                                                                     id="sales" max="900000000"
-                                                                     min="0" placeholder="Numero de ventas"
-                                                                     step="any" th:field="*{euSales}"
-                                                                     type="number">
-                        </div>
-                        <div class="row mt-5 ">
-
-                            <div class="col btn-group">
-                                <button class="btn btn-success btn-lg m-4 rounded-3" type="submit">Guardar
-                                </button>
-                                <button class="btn btn-danger btn-lg m-4 rounded-3" id="delete" th:formaction="@{/delete}"
-                                        type="submit">Borrar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Género</th>
+                                <th scope="col">Plataforma</th>
+                                <th scope="col">Editora</th>
+                                <th scope="col">Año</th>
+                                <th scope="col">Ventas Europeas</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="game, status : ${nintendoGames}">
+                                <td th:text="${status.index + 1 }"/>
+                                <td th:text="${game.name}"/>
+                                <td th:text="${game.genre}"/>
+                                <td th:text="${game.platform}"/>
+                                <td th:text="${game.publisher}"/>
+                                <td th:text="${game.year}"/>
+                                <td th:text="${game.euSales}"/>
+                                <td><a class="btn-primary" th:href="@{/edit(id=${game.id})}">Modificar</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 </div>
 
-
 <script th:href="@{/js/bootstrap.bundle.min.js}"></script>
 <script th:href="@{/js/dashboard.js}"></script>
 <script th:href="@{/js/sidebars.js}"></script>
 </body>
 </html>
-
-
-

@@ -6,8 +6,10 @@
 package com.mvc.spring.model;
 
 /**
- *
- * @author miso
+ * QueryInfo
+ * La clase Query Info modela una búsqueda del usuario en el sistema
+ * @author George
+ * @version 1.0, Septiembre, 2021
  */
 public class QueryInfo {
     private String option = "name";
@@ -15,7 +17,6 @@ public class QueryInfo {
 
     public QueryInfo() {
     }
-    
 
     public String getOption() {
         return option;
@@ -32,6 +33,12 @@ public class QueryInfo {
     public void setText(String text) {
         this.text = text;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "QueryInfo{" +
+                "option='" + option + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
