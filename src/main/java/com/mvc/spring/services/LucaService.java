@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import com.mvc.spring.model.Game;
 
 public interface LucaService {
+  
     public void loadDataFromFile(File file);
 
     public void save(Game game);
@@ -37,11 +38,12 @@ public interface LucaService {
 
     public List<String> getAllPublishers();
 
-    public List<Game> getAllYearPairGames();
+    public Page<Game> getAllYearPairGames(Pageable pageable);
 
     public Page<Game> getAllSuperSalesGames(Pageable pageable);
 
     public Page<Game> getAllNintendoConsoleGames(Pageable page);
 
     public Page<Game> getAllGamesReleasedIn20Century(Pageable page);
+
 }

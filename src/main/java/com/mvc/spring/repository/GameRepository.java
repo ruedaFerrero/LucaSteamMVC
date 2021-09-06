@@ -88,7 +88,7 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 * @return List<Game> Lista de juegos
 	 */
     @Query("SELECT gameyearpair FROM Game gameyearpair WHERE gameyearpair.year%2 = 0")
-    List<Game> findAllYearPairGames();
+    Page<Game> findAllYearPairGames(Pageable pageable);
     
     /**
 	 * Devuelve la lista de todos juegos con ventas superiores a la media
