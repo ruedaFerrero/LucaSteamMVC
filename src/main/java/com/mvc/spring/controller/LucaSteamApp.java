@@ -253,8 +253,26 @@ public class LucaSteamApp {
     }
 
     @GetMapping("/20thCenturyGame")
-    public String getGames20Century(Model model){
-        model.addAttribute("gameList",service.getAllGamesReleasedIn20Century());
+    public String getGames20Century(@RequestParam Map<String, Object> param, Model model){
+        int page = param.get("page") != null ? Integer.valueOf(param.get("page").toString()) - 1 : 0;
+
+        PageRequest pr = PageRequest.of(page, 30);
+
+        Page<Game> pageGame = service.getAllGamesReleasedIn20Century(pr);
+
+        int totalPages = pageGame.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pages = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pages", pages);
+        }
+
+        model.addAttribute("gameList", pageGame.getContent());
+        model.addAttribute("current", page + 1);
+        model.addAttribute("prev", page);
+        model.addAttribute("next", page + 2);
+        model.addAttribute("last", totalPages);
+        model.addAttribute("totalEntries", pageGame.getTotalElements());
+
         return "centuryXXList";
     }
 }

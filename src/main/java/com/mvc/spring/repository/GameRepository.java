@@ -1,6 +1,9 @@
 package com.mvc.spring.repository;
 
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -104,5 +107,5 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 * @return
 	 */
     @Query("select g from Game g where g.year<2000")
-    List<Game> findAllGamesFromXXCentury();
+	Page<Game> findAllGamesFromXXCentury(Pageable page);
 }

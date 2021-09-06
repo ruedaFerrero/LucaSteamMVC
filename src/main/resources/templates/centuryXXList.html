@@ -102,6 +102,7 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="container-fluid overflow-auto">
                 <div class="row">
+                    <h4 class="py-3" th:text="'Encontrados ' + ${totalEntries} +  ' resultados'"></h4>
                 </div>
                 <div class="row">
                     <div class="table-responsive">
@@ -131,6 +132,21 @@
 
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <nav aria-label="Pagination"></nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item" th:classappend="${prev == 0 ? 'disabled': ''}">
+                                        <a class="page-link" th:href="@{|/20thCenturyGame?page=${prev}|}">Anterior</a>
+                                    </li>
+                                    <li class="page-item" th:classappend="${current == last ? 'disabled': ''}">
+                                        <a class="page-link" th:href="@{|/20thCenturyGame?page=${next}|}">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
                     </div>
                 </div>
             </div>

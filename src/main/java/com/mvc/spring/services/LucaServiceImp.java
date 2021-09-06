@@ -251,7 +251,7 @@ public class LucaServiceImp implements LucaService {
 	 * Devuelve una lista de juegos publicados en el siglo 20
 	 * @return
 	 */
-	public List<Game> getAllGamesReleasedIn20Century(){
-		return repository.findAllGamesFromXXCentury();
+	public Page<Game> getAllGamesReleasedIn20Century(Pageable page){
+		return repository.findAllGamesFromXXCentury(page);
 	}
 }
