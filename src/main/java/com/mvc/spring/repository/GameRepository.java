@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mvc.spring.model.Game;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * GameRepository
@@ -90,7 +92,7 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 * @return List<Game> Lista de juegos
 	 */
     @Query("select g from Game g where g.euSales > (select avg(e.euSales) from Game e)")
-    List<Game> findAllSuperSalesGames();
+    Page<Game> findAllSuperSalesGames(Pageable pageable);
 
 	/**
 	 * Devuelve una lista de todos los juegos para consola de nintendo
