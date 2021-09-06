@@ -224,8 +224,25 @@ public class LucaSteamApp {
      * @return yearPairList.html
      */
     @GetMapping("/yearpair")
-    public String getYearPairGames(Model model){
-        model.addAttribute("gamesList", service.getAllYearPairGames());
+    public String getYearPairGames(@RequestParam Map<String, Object> param, Model model){
+        int page = param.get("page") != null ? Integer.valueOf(param.get("page").toString()) - 1 : 0;
+
+        PageRequest pr = PageRequest.of(page, 30);
+
+        Page<Game> pageGame = service.getAllYearPairGames(pr);
+
+        int totalPages = pageGame.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pages = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pages", pages);
+        }
+
+        model.addAttribute("gameList", pageGame.getContent());
+        model.addAttribute("current", page + 1);
+        model.addAttribute("prev", page);
+        model.addAttribute("next", page + 2);
+        model.addAttribute("last", totalPages);
+        
         return "yearPairList";
     }
     

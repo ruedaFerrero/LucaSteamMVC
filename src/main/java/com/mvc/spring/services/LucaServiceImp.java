@@ -227,8 +227,9 @@ public class LucaServiceImp implements LucaService {
 	 * Devuelve la lista de todos juegos lanzados en año par
 	 * @return List<Game> Lista de juegos
 	 */
-	public List<Game> getAllYearPairGames() {
-		return repository.findAllYearPairGames();
+	public Page<Game> getAllYearPairGames(Pageable pageable) {
+		
+		return repository.findAllYearPairGames(pageable);
 	}
         
         /**
@@ -254,4 +255,6 @@ public class LucaServiceImp implements LucaService {
 	public List<Game> getAllGamesReleasedIn20Century(){
 		return repository.findAllGamesFromXXCentury();
 	}
+
+	
 }

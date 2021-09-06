@@ -23,7 +23,7 @@ public interface LucaService {
 	
 	public List<Game> gamesFilteredByGenre(String genre);
 	
-	Page<Game> getAll(Pageable pageable);
+	public Page<Game> getAll(Pageable pageable);
         
 	public List<Game> gamesFilteredByName(String name);
         
@@ -37,11 +37,13 @@ public interface LucaService {
 
 	public List<String> getAllPublishers();
 
-  public List<Game> getAllYearPairGames();
+  public Page<Game> getAllYearPairGames(Pageable pageable);
         
   public List<Game> getAllSuperSalesGames();
 
   public List<Game> getAllNintendoConsoleGames();
 
   public List<Game> getAllGamesReleasedIn20Century();
+  
+  
 }
