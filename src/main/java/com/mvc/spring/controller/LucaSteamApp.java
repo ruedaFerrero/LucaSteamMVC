@@ -236,7 +236,7 @@ public class LucaSteamApp {
             List<Integer> pages = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             model.addAttribute("pages", pages);
         }
-
+        model.addAttribute("totalGames", pageGame.getTotalElements());
         model.addAttribute("gameList", pageGame.getContent());
         model.addAttribute("current", page + 1);
         model.addAttribute("prev", page);
