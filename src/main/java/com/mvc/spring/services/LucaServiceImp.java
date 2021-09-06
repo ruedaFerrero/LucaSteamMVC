@@ -243,16 +243,16 @@ public class LucaServiceImp implements LucaService {
 	 * Devuelve una lista de todos los juegos para consola de nintendo
 	 * @return
 	 */
-	public List<Game> getAllNintendoConsoleGames(){
-		return repository.getAllNintendoConsoleGames("wii", "nes", "gb", "ds", "snes");
+	public Page<Game> getAllNintendoConsoleGames(Pageable page){
+		return repository.getAllNintendoConsoleGames("wii", "nes", "gb", "ds", "snes", page);
 	}
 
 	/**
 	 * Devuelve una lista de juegos publicados en el siglo 20
 	 * @return
 	 */
-	public List<Game> getAllGamesReleasedIn20Century(){
-		return repository.findAllGamesFromXXCentury();
+	public Page<Game> getAllGamesReleasedIn20Century(Pageable page){
+		return repository.findAllGamesFromXXCentury(page);
 	}
         
         

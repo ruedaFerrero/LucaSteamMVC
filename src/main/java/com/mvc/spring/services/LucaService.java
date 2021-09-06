@@ -41,8 +41,7 @@ public interface LucaService {
 
     public Page<Game> getAllSuperSalesGames(Pageable pageable);
 
-    public List<Game> getAllNintendoConsoleGames();
+    public Page<Game> getAllNintendoConsoleGames(Pageable page);
 
-    public List<Game> getAllGamesReleasedIn20Century();
-
+    public Page<Game> getAllGamesReleasedIn20Century(Pageable page);
 }
