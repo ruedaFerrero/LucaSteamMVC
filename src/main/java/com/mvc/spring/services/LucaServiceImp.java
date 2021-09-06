@@ -235,8 +235,8 @@ public class LucaServiceImp implements LucaService {
 	 * Devuelve la lista de todos los juegos con ventas superiores a la media
 	 * @return List<Game> Lista de juegos
 	 */
-	public List<Game> getAllSuperSalesGames() {
-		return repository.findAllSuperSalesGames();
+	public Page<Game> getAllSuperSalesGames(Pageable pageable) {
+		return repository.findAllSuperSalesGames(pageable);
 	}
 
 	/**
@@ -254,4 +254,6 @@ public class LucaServiceImp implements LucaService {
 	public Page<Game> getAllGamesReleasedIn20Century(Pageable page){
 		return repository.findAllGamesFromXXCentury(page);
 	}
+        
+        
 }

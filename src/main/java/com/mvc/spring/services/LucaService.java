@@ -9,39 +9,39 @@ import org.springframework.data.domain.Pageable;
 import com.mvc.spring.model.Game;
 
 public interface LucaService {
-	public void loadDataFromFile(File file);
+    public void loadDataFromFile(File file);
 
-	public void save(Game game);
-	
-	public List<Game> getAllGames();
-	
-	public Game findByName(String name);
+    public void save(Game game);
 
-	public Game findById(Long id);
+    public List<Game> getAllGames();
 
-	public void deleteGame(Long id);
-	
-	public List<Game> gamesFilteredByGenre(String genre);
-	
-	Page<Game> getAll(Pageable pageable);
-        
-	public List<Game> gamesFilteredByName(String name);
-        
-	public List<Game> gamesFilteredByPlatform(String platform);
-        
-	public List<Game> gamesFilteredByPublisher(String publisher);
-        
-	public List<Game> gamesFilteredByYear(Integer year);
-        
-	public List<Game> gamesFilteredByEusales(Double sales);
+    public Game findByName(String name);
 
-	public List<String> getAllPublishers();
+    public Game findById(Long id);
 
-  public List<Game> getAllYearPairGames();
-        
-  public List<Game> getAllSuperSalesGames();
+    public void deleteGame(Long id);
 
-  public Page<Game> getAllNintendoConsoleGames(Pageable page);
+    public List<Game> gamesFilteredByGenre(String genre);
 
-  public Page<Game> getAllGamesReleasedIn20Century(Pageable page);
+    Page<Game> getAll(Pageable pageable);
+
+    public List<Game> gamesFilteredByName(String name);
+
+    public List<Game> gamesFilteredByPlatform(String platform);
+
+    public List<Game> gamesFilteredByPublisher(String publisher);
+
+    public List<Game> gamesFilteredByYear(Integer year);
+
+    public List<Game> gamesFilteredByEusales(Double sales);
+
+    public List<String> getAllPublishers();
+
+    public List<Game> getAllYearPairGames();
+
+    public Page<Game> getAllSuperSalesGames(Pageable pageable);
+
+    public Page<Game> getAllNintendoConsoleGames(Pageable page);
+
+    public Page<Game> getAllGamesReleasedIn20Century(Pageable page);
 }
