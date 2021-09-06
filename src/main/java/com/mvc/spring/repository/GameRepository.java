@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.mvc.spring.model.Game;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * GameRepository
@@ -93,19 +95,19 @@ public interface GameRepository extends JpaRepository<Game, Long>{
 	 * @return List<Game> Lista de juegos
 	 */
     @Query("select g from Game g where g.euSales > (select avg(e.euSales) from Game e)")
-    List<Game> findAllSuperSalesGames();
+    Page<Game> findAllSuperSalesGames(Pageable pageable);
 
 	/**
 	 * Devuelve una lista de todos los juegos para consola de nintendo
 	 * @return
 	 */
     @Query("select g from Game g where LOWER(g.platform)=?1 or LOWER(g.platform)=?2 or LOWER(g.platform)=?3 or LOWER(g.platform)=?4 or LOWER(g.platform)=?5")
-	List<Game> getAllNintendoConsoleGames(String wii, String NES, String GB, String DS, String SNES);
+	Page<Game> getAllNintendoConsoleGames(String wii, String NES, String GB, String DS, String SNES, Pageable page);
 
 	/**
 	 * Devuelve una lista de juegos publicados en el siglo 20
 	 * @return
 	 */
     @Query("select g from Game g where g.year<2000")
-    List<Game> findAllGamesFromXXCentury();
+	Page<Game> findAllGamesFromXXCentury(Pageable page);
 }
